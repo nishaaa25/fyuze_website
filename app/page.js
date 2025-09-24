@@ -1,103 +1,107 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="font-sans bg-orange-600 min-h-screen w-full relative flex-center gradient-1">
+      <div className="relative flex-center flex-col w-1/2 ">
+        <div className="relative w-[40vw] h-[20vw]">
+          <Image
+            src="/assets/fyuze.svg"
+            alt="logo"
+            fill
+            className="object-contain relative z-100"
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="relative w-full flex-center flex-col gap-12">
+          <div className="flex-center flex-col gap-6 relative">
+            <h1 className="font-archivo text-[1.8vw] leading-[1.5vw] font-bold">
+              Ask Fyuze to find your next Influencer
+            </h1>
+            <p className="text-sm font-[300] leading-[110%] w-[58%] mx-auto text-center">
+              AI-powered influencer discovery that filters by niche,
+              authenticity & ROI so you spend less time searching and more time
+              growing.
+            </p>
+          </div>
+          <div className="relative w-full h-full">
+            <div className="relative w-full flex-between p-5 h-full input-gradient rounded-[28px] backdrop-blur-[10px] z-100">
+              <div className="relative w-10 h-10 ">
+                <Image
+                  src="/assets/sparkle.svg"
+                  alt="logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="flex-center relative gap-3">
+                <div className="relative flex-center p-3 rounded-2xl icon-gradient ">
+                  <div className="relative w-5 h-5 ">
+                    <Image
+                      src="/assets/clip.svg"
+                      alt="logo"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+                <div className="relative flex-center p-3 rounded-2xl icon-gradient">
+                  <div className="relative w-5 h-5">
+                    <Image
+                      src="/assets/arrow.svg"
+                      alt="logo"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="w-full absolute top-0 left-0 overflow-hidden custom-border h-full z-100"></div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute bottom-8 flex justify-start items-start w-full pl-10 ">
+        <div className="flex-between gap-10 relative">
+          <Link
+            href="/"
+            className="text-sm font-[300] leading-[100%] uppercase"
+          >
+            terms
+          </Link>
+          <div className="relative w-[2px] h-[2px] rounded-full bg-white"></div>
+          <Link
+            href="/"
+            className="text-sm font-[300] leading-[100%] uppercase"
+          >
+            privacy policy
+          </Link>
+        </div>
+      </div>
+      <div className="absolute bottom-8 flex-center flex-col gap-1 ">
+        <div className="w-[0.5px] h-[20px] relative bg-white"></div>
+        <p className="text-xs text-center font-medium font-archivo leading-[100%] uppercase">
+          Scroll to explore
+        </p>
+        <div className="w-[0.5px] h-[5px] relative bg-white"></div>
+      </div>
+      <div className="absolute w-11/12 h-[80vh] overflow-hidden">
+        <div className="absolute left-[28.2vw] top-[35vh] w-[0.5px] h-[100px] gradient-2 z-10"></div>
+        <div className="absolute left-0 top-[5vh] w-[0.5px] h-[255px] gradient-2"></div>
+        <div className="absolute left-0 bottom-[5vh] w-[0.5px] h-[255px] gradient-2"></div>
+        <div className="absolute left-[10vw] top-[20vh] w-[0.5px] h-[255px] gradient-2"></div>
+        <div className="absolute left-[15vw] top-[10vh] w-[0.5px] h-[255px] gradient-2"></div>
+        <div className="absolute left-[18vw] bottom-[8vh] w-[0.5px] h-[255px] gradient-2"></div>
+        <div className="absolute left-[37.5vw] top-[4vh] w-[0.5px] h-[210px] gradient-2 z-10"></div>
+        <div className="absolute left-[52vw] top-[7vh] w-[0.5px] h-[130px] gradient-2 z-1"></div>
+        <div className="absolute left-[32vw] bottom-[5vh] w-[0.5px] h-[255px] gradient-2 z-1"></div>
+        <div className="absolute left-[62.5vw] bottom-[7vh] w-[0.5px] h-[255px] gradient-2 z-1"></div>
+        <div className="absolute left-[64vw] top-[34vh] w-[0.5px] h-[100px] gradient-2 z-1"></div>
+        <div className="absolute left-[64vw] top-[29.5vh] w-[0.5px] h-[16px] gradient-2 z-1"></div>
+        <div className="absolute left-[72vw] top-[3vh] w-[0.5px] h-[255px] gradient-2 z-1"></div>
+        <div className="absolute left-[80vw] top-[45vh] w-[0.5px] h-[255px] gradient-2 z-1"></div>
+        <div className="absolute right-0 top-[20vh] w-[0.5px] h-[255px] gradient-2 z-1"></div>
+      </div>
     </div>
   );
 }

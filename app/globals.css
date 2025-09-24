@@ -23,4 +23,144 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter/Inter-Regular.otf") format("otf");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter/Inter-Black.otf") format("otf");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter/Inter-ExtraBold.otf") format("otf");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter/Inter-ExtraBold.otf") format("otf");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter/Inter-Semibold.otf") format("otf");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter/Inter-Medium.otf") format("otf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/Archivo/Archivo-Semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/Archivo/Archivo-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/Archivo/Archivo-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/Archivo/Archivo-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+.font-archivo {
+  font-family: "Archivo", sans-serif;
+}
+.font-inter {
+  font-family: "Inter", sans-serif;
+}
+@layer base {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+}
+
+.gradient-1 {
+  background: linear-gradient(
+    315.79deg,
+    #dd3305 7.69%,
+    #ee4f20 43.56%,
+    #ff6b3a 79.42%,
+    #ffb347 97.5%
+  );
+}
+.input-gradient {
+ background: linear-gradient(272.78deg, rgba(255, 255, 255, 0.2) -4.66%, rgba(255, 255, 255, 0) 13.42%, rgba(255, 255, 255, 0.2) 92.77%);
+
+}
+
+.icon-gradient {
+  background: linear-gradient(
+    272.78deg,
+    rgba(255, 255, 255, 0.2) -4.66%,
+    rgba(255, 255, 255, 0) 13.42%,
+    rgba(255, 255, 255, 0.2) 92.77%
+  );
+}
+.bg-custom {
+  background: linear-gradient(
+    82deg,
+    rgba(255, 255, 255, 0.2) 1%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+.custom-border {
+  border-radius: 28px;
+  backdrop-filter: blur(20px);
+  padding: 1px; /* thickness of the border */
+  background: linear-gradient(130deg, #ffffff, #ffffff00, #ffffff00, #ffffff00, #ffffff00, #ffffff00, #ffffff00, #ffffff00, #ffffff33, #ffffff);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  background-clip: padding-box;
+  display: inline-block; /* makes inner content visible */
+  color: black; /* text color inside */
+}
+
+/* border: 0.4px solid;
+
+border-image-source: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 50%, rgba(255, 255, 255, 0) 100%); */
+
+.gradient-2 {
+  background: linear-gradient(
+    10deg,
+    rgba(255, 255, 255, 0) 0%,
+    #ffffffb3 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+.gradient-3 {
+  background: linear-gradient(
+    291.96deg,
+    rgba(255, 133, 63, 0.5) 21.16%,
+    rgba(237, 77, 30, 0.5) 50%,
+    rgba(255, 133, 63, 0.5) 78.84%
+  );
 }
