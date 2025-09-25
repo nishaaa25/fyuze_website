@@ -117,24 +117,31 @@ body {
 }
 
 .icon-gradient {
+
   background: linear-gradient(
-    272.78deg,
-    rgba(255, 255, 255, 0.2) -4.66%,
-    rgba(255, 255, 255, 0) 13.42%,
-    rgba(255, 255, 255, 0.2) 92.77%
+    90deg,
+    rgba(255, 255, 255, 0) 0%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    rgba(255, 255, 255, 0) 100%
   );
-  background-size: 200% 100%;
+  background-size: 200% 100%; 
+  background-position: -100% 0;
   cursor: pointer;
 }
 
 .icon-gradient:hover {
-  animation: slideGradient 1s ease-in-out infinite;
+  animation: slideGradient 1s linear infinite; 
 }
 
 @keyframes slideGradient {
-  0% { background-position: right center; }
-  100% { background-position: left center; }
+  0% {
+    background-position: 100% 0; 
+  }
+  100% {
+    background-position: -100% 0;
+  }
 }
+
 
 .bg-custom {
   background: linear-gradient(
