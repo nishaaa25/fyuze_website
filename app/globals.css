@@ -123,7 +123,19 @@ body {
     rgba(255, 255, 255, 0) 13.42%,
     rgba(255, 255, 255, 0.2) 92.77%
   );
+  background-size: 200% 100%;
+  cursor: pointer;
 }
+
+.icon-gradient:hover {
+  animation: slideGradient 1s ease-in-out infinite;
+}
+
+@keyframes slideGradient {
+  0% { background-position: right center; }
+  100% { background-position: left center; }
+}
+
 .bg-custom {
   background: linear-gradient(
     82deg,

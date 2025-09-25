@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Navbar(params) {
   return (
-    <nav className="w-full absolute p-10 flex-between z-40">
+    <nav className="w-full absolute p-9 flex-between z-40">
       <div className="relative flex-center gap-12">
         <div className="relative w-24 h-[30px]">
           <Image

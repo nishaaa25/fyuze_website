@@ -1,9 +1,117 @@
+"use client";
+import useLenis from "@/lib/hooks/useLenis";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { useEffect } from "react";
+import { TweenMax, Linear } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
+import { useRef } from "react";
 
 export default function Home() {
+  const homeContainer = useRef();
+  const scrollBtn = useRef();
+  const sparkleCont = useRef();
+  const tl = useRef(null);
+
+  useEffect(() => {
+    const droplets = document.querySelectorAll(".droplet");
+
+    droplets.forEach((droplet) => {
+      const delay = Math.random();
+      const speed = Math.random() * 0.5 + 0.2;
+      const distance = 500 + Math.random() * 100;
+
+      TweenMax.to(droplet, speed, {
+        y: distance,
+        duration: Math.random() * 2 + 2,
+        delay: Math.random(),
+        repeat: -1,
+        ease: Linear.easeNone,
+      });
+    });
+  }, []);
+
+  useEffect(() => {
+    const sparkles = sparkleCont.current.querySelectorAll(
+      ".sparkle-1, .sparkle-2, .sparkle-3"
+    );
+
+    tl.current = gsap.timeline({ paused: true });
+
+    const scales = [1.3, 1.2, 1.1, 1]; 
+
+    scales.forEach((s, i) => {
+      tl.current.to(
+        sparkles,
+        {
+          scale: s,
+          duration: 0.4,
+          ease: "power1.out",
+          stagger: 0.15,
+        },
+        i * 0.2
+      );
+    });
+
+    tl.current.to(
+      sparkles,
+      {
+        scale: 1,
+        duration: 0.3,
+        ease: "power1.in",
+        stagger: 0.15,
+      },
+      "+=0"
+    );
+
+    tl.current.play();
+  }, []);
+
+  useGSAP(() => {
+    const tl1 = gsap.timeline({
+      repeat: -1,
+      yoyo: true,
+      repeatDelay: 0.5,
+    });
+
+    tl1
+      .fromTo(
+        ".line1",
+        {
+          clipPath: "inset(0 0 100% 0)",
+        },
+        {
+          clipPath: "inset(0 0 0% 0)",
+          duration: 0.5,
+        }
+      )
+      .fromTo(
+        ".line2",
+        {
+          clipPath: "inset(0 0 100% 0)",
+        },
+        {
+          clipPath: "inset(0 0 0% 0)",
+          duration: 0.5,
+        }
+      )
+      .from(
+        ".text",
+        {
+          opacity: 0,
+          duration: 1,
+        },
+        "-=1"
+      );
+  }, homeContainer);
+
+  useLenis();
   return (
-    <div className="font-sans bg-orange-600 min-h-screen w-full relative flex-center gradient-1">
+    <div
+      className="font-sans bg-orange-600 min-h-screen w-full relative flex-center gradient-1"
+      ref={homeContainer}
+    >
       <div className="relative flex-center flex-col w-1/2 ">
         <div className="relative w-[40vw] h-[20vw]">
           <Image
@@ -25,17 +133,40 @@ export default function Home() {
             </p>
           </div>
           <div className="relative w-full h-full">
-            <div className="relative w-full flex-between p-5 h-full input-gradient rounded-[28px] backdrop-blur-[10px] z-100">
-              <div className="relative w-10 h-10 ">
+            <input
+              type="text"
+              className="w-full h-full absolute bg-transparent outline-none text-white placeholder:text-white pl-20"
+            />
+            <div className="relative w-full flex-between p-5 h-full input-gradient rounded-[28px] backdrop-blur-[3px] z-80">
+              <div
+                className="relative w-[42px] h-[42px] sparkle-cont cursor-pointer z-100"
+                ref={sparkleCont}
+                onMouseEnter={() => tl.current.restart()}
+              >
                 <Image
                   src="/assets/sparkle.svg"
                   alt="logo"
-                  fill
-                  className="object-contain"
+                  width={28}
+                  height={28}
+                  className="relative top-[9px] left-[3.94px] sparkle-1"
+                />
+                <Image
+                  src="/assets/sparkle.svg"
+                  alt="logo"
+                  width={10}
+                  height={10}
+                  className="absolute top-[4px] left-[22px] sparkle-2"
+                />
+                <Image
+                  src="/assets/sparkle.svg"
+                  alt="logo"
+                  width={5}
+                  height={5}
+                  className="absolute top-[13px] left-[30px] sparkle-3"
                 />
               </div>
               <div className="flex-center relative gap-3">
-                <div className="relative flex-center p-3 rounded-2xl icon-gradient ">
+                <div className="relative flex-center p-3 rounded-2xl icon-gradient cursor-pointer">
                   <div className="relative w-5 h-5 ">
                     <Image
                       src="/assets/clip.svg"
@@ -57,7 +188,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="w-full absolute top-0 left-0 overflow-hidden custom-border h-full z-100"></div>
+            <div className="w-full absolute top-0 left-0 overflow-hidden custom-border h-full z-90 pointer-events-none"></div>
           </div>
         </div>
       </div>
@@ -78,29 +209,32 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      <div className="absolute bottom-8 flex-center flex-col gap-1 ">
-        <div className="w-[0.5px] h-[20px] relative bg-white"></div>
-        <p className="text-xs text-center font-medium font-archivo leading-[100%] uppercase">
+      <div
+        className="absolute bottom-8 flex-center flex-col gap-1"
+        ref={scrollBtn}
+      >
+        <div className="w-[0.6px] h-[20px] relative bg-white line1"></div>
+        <p className="text-xs text-center font-medium font-archivo leading-[100%] uppercase text">
           Scroll to explore
         </p>
-        <div className="w-[0.5px] h-[5px] relative bg-white"></div>
+        <div className="w-[0.6px] h-[5px] relative bg-white line2"></div>
       </div>
-      <div className="absolute w-11/12 h-[80vh] overflow-hidden">
-        <div className="absolute left-[28.2vw] top-[35vh] w-[0.5px] h-[100px] gradient-2 z-10"></div>
-        <div className="absolute left-0 top-[5vh] w-[0.5px] h-[255px] gradient-2"></div>
-        <div className="absolute left-0 bottom-[5vh] w-[0.5px] h-[255px] gradient-2"></div>
-        <div className="absolute left-[10vw] top-[20vh] w-[0.5px] h-[255px] gradient-2"></div>
-        <div className="absolute left-[15vw] top-[10vh] w-[0.5px] h-[255px] gradient-2"></div>
-        <div className="absolute left-[18vw] bottom-[8vh] w-[0.5px] h-[255px] gradient-2"></div>
-        <div className="absolute left-[37.5vw] top-[4vh] w-[0.5px] h-[210px] gradient-2 z-10"></div>
-        <div className="absolute left-[52vw] top-[7vh] w-[0.5px] h-[130px] gradient-2 z-1"></div>
-        <div className="absolute left-[32vw] bottom-[5vh] w-[0.5px] h-[255px] gradient-2 z-1"></div>
-        <div className="absolute left-[62.5vw] bottom-[7vh] w-[0.5px] h-[255px] gradient-2 z-1"></div>
-        <div className="absolute left-[64vw] top-[34vh] w-[0.5px] h-[100px] gradient-2 z-1"></div>
-        <div className="absolute left-[64vw] top-[29.5vh] w-[0.5px] h-[16px] gradient-2 z-1"></div>
-        <div className="absolute left-[72vw] top-[3vh] w-[0.5px] h-[255px] gradient-2 z-1"></div>
-        <div className="absolute left-[80vw] top-[45vh] w-[0.5px] h-[255px] gradient-2 z-1"></div>
-        <div className="absolute right-0 top-[20vh] w-[0.5px] h-[255px] gradient-2 z-1"></div>
+      <div className="absolute w-full h-full overflow-hidden">
+        <div className="absolute left-[32.5vw] top-[45vh] w-[0.5px] h-[100px] gradient-2 z-10 droplet"></div>
+        <div className="absolute left-[4vw] top-[14vh] w-[0.5px] h-[255px] gradient-2 droplet"></div>
+        <div className="absolute left-[4vw] bottom-[12vh] w-[0.5px] h-[255px] gradient-2 droplet"></div>
+        <div className="absolute left-[15vw] top-[26vh] w-[0.5px] h-[255px] gradient-2 droplet"></div>
+        <div className="absolute left-[21vw] top-[18vh] w-[0.5px] h-[255px] gradient-2 droplet"></div>
+        <div className="absolute left-[24vw] bottom-[18vh] w-[0.5px] h-[255px] gradient-2 droplet"></div>
+        <div className="absolute left-[41.5vw] top-[13vh] w-[0.5px] h-[210px] gradient-2 z-10 droplet"></div>
+        <div className="absolute left-[57vw] top-[18vh] w-[0.5px] h-[130px] gradient-2 z-1 droplet"></div>
+        <div className="absolute left-[35vw] bottom-[15vh] w-[0.5px] h-[255px] gradient-2 z-1 droplet"></div>
+        <div className="absolute left-[66vw] bottom-[17vh] w-[0.5px] h-[255px] gradient-2 z-1 droplet"></div>
+        <div className="absolute left-[68.5vw] top-[43vh] w-[0.5px] h-[100px] gradient-2 z-1 droplet"></div>
+        <div className="absolute left-[68.5vw] top-[39.5vh] w-[0.5px] h-[16px] gradient-2 z-1 droplet"></div>
+        <div className="absolute left-[78vw] top-[3vh] w-[0.5px] h-[255px] gradient-2 z-1 droplet"></div>
+        <div className="absolute left-[85vw] top-[50vh] w-[0.5px] h-[255px] gradient-2 z-1 droplet"></div>
+        <div className="absolute right-[4vw] top-[25vh] w-[0.5px] h-[255px] gradient-2 z-1 droplet"></div>
       </div>
     </div>
   );
