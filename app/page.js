@@ -14,23 +14,26 @@ export default function Home() {
   const sparkleCont = useRef();
   const tl = useRef(null);
 
-  useEffect(() => {
-    const droplets = document.querySelectorAll(".droplet");
+ useEffect(() => {
+  const droplets = document.querySelectorAll(".droplet");
+  const container = document.querySelector(".droplet-container"); 
+  const containerHeight = container.offsetHeight;
 
-    droplets.forEach((droplet) => {
-      const delay = Math.random();
-      const speed = Math.random() * 0.5 + 0.2;
-      const distance = 500 + Math.random() * 100;
+  droplets.forEach((droplet) => {
+    const startY = -50 - Math.random() * 200; 
+    const distance = containerHeight - startY + 100; 
+    const duration = 0.8 + Math.random() * 2;
 
-      TweenMax.to(droplet, speed, {
-        y: distance,
-        duration: Math.random() * 2 + 2,
-        delay: Math.random(),
-        repeat: -1,
-        ease: Linear.easeNone,
-      });
+    TweenMax.set(droplet, { y: startY });
+
+    TweenMax.to(droplet, duration, {
+      y: startY + distance, 
+      repeat: -1,
+      ease: Linear.easeNone,
     });
-  }, []);
+  });
+}, []);
+
 
   useEffect(() => {
     const sparkles = sparkleCont.current.querySelectorAll(
@@ -39,7 +42,7 @@ export default function Home() {
 
     tl.current = gsap.timeline({ paused: true });
 
-    const scales = [1.3, 1.2, 1.1, 1]; 
+    const scales = [1.3, 1.2, 1.1, 1];
 
     scales.forEach((s, i) => {
       tl.current.to(
@@ -219,22 +222,21 @@ export default function Home() {
         </p>
         <div className="w-[0.6px] h-[5px] relative bg-white line2"></div>
       </div>
-      <div className="absolute w-full h-full overflow-hidden">
-        <div className="absolute left-[32.5vw] top-[45vh] w-[0.5px] h-[100px] gradient-2 z-10 droplet"></div>
-        <div className="absolute left-[4vw] top-[14vh] w-[0.5px] h-[255px] gradient-2 droplet"></div>
-        <div className="absolute left-[4vw] bottom-[12vh] w-[0.5px] h-[255px] gradient-2 droplet"></div>
-        <div className="absolute left-[15vw] top-[26vh] w-[0.5px] h-[255px] gradient-2 droplet"></div>
-        <div className="absolute left-[21vw] top-[18vh] w-[0.5px] h-[255px] gradient-2 droplet"></div>
-        <div className="absolute left-[24vw] bottom-[18vh] w-[0.5px] h-[255px] gradient-2 droplet"></div>
-        <div className="absolute left-[41.5vw] top-[13vh] w-[0.5px] h-[210px] gradient-2 z-10 droplet"></div>
-        <div className="absolute left-[57vw] top-[18vh] w-[0.5px] h-[130px] gradient-2 z-1 droplet"></div>
-        <div className="absolute left-[35vw] bottom-[15vh] w-[0.5px] h-[255px] gradient-2 z-1 droplet"></div>
-        <div className="absolute left-[66vw] bottom-[17vh] w-[0.5px] h-[255px] gradient-2 z-1 droplet"></div>
-        <div className="absolute left-[68.5vw] top-[43vh] w-[0.5px] h-[100px] gradient-2 z-1 droplet"></div>
-        <div className="absolute left-[68.5vw] top-[39.5vh] w-[0.5px] h-[16px] gradient-2 z-1 droplet"></div>
-        <div className="absolute left-[78vw] top-[3vh] w-[0.5px] h-[255px] gradient-2 z-1 droplet"></div>
-        <div className="absolute left-[85vw] top-[50vh] w-[0.5px] h-[255px] gradient-2 z-1 droplet"></div>
-        <div className="absolute right-[4vw] top-[25vh] w-[0.5px] h-[255px] gradient-2 z-1 droplet"></div>
+      <div className="absolute w-full h-full overflow-hidden droplet-container">
+        <div className="absolute left-[32.5vw]  w-[0.5px] h-[100px] gradient-2 z-10 droplet"></div>
+        <div className="absolute left-[4vw] w-[0.5px] h-[255px] gradient-2 droplet"></div>
+        <div className="absolute left-[4vw]  w-[0.5px] h-[255px] gradient-2 droplet"></div>
+        <div className="absolute left-[15vw]  w-[0.5px] h-[255px] gradient-2 droplet"></div>
+        <div className="absolute left-[21vw]  w-[0.5px] h-[255px] gradient-2 droplet"></div>
+        <div className="absolute left-[24vw] w-[0.5px] h-[255px] gradient-2 droplet"></div>
+        <div className="absolute left-[41.5vw]  w-[0.5px] h-[210px] gradient-2 z-10 droplet"></div>
+        <div className="absolute left-[57vw] w-[0.5px] h-[130px] gradient-2 z-1 droplet"></div>
+        <div className="absolute left-[35vw] w-[0.5px] h-[255px] gradient-2 z-1 droplet"></div>
+        <div className="absolute left-[66vw] w-[0.5px] h-[255px] gradient-2 z-1 droplet"></div>
+        <div className="absolute left-[68.5vw]  w-[0.5px] h-[255px] gradient-2 z-1 droplet"></div>
+        <div className="absolute left-[78vw]  w-[0.5px] h-[255px] gradient-2 z-1 droplet"></div>
+        <div className="absolute left-[85vw] w-[0.5px] h-[255px] gradient-2 z-1 droplet"></div>
+        <div className="absolute right-[4vw] w-[0.5px] h-[255px] gradient-2 z-1 droplet"></div>
       </div>
     </div>
   );
