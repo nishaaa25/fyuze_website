@@ -5,6 +5,7 @@ import useLenis from "@/lib/hooks/useLenis";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useContext } from "react";
 import { ThemeContext } from "@/lib/hooks/ThemeContext";
+import SocialPlatformsComponent from "@/components/SocialPlatformsComponent";
 
 export default function Home() {
   const { setDarkText } = useContext(ThemeContext);
@@ -35,6 +36,10 @@ export default function Home() {
       <div className="section" data-text="dark">
         <AboutComponent />
       </div>
+       <div className="section" data-text="dark">
+        <SocialPlatformsComponent />
+      </div>
+      
     </div>
   );
 }
