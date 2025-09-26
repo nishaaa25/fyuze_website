@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useContext } from "react";
 import { ThemeContext } from "@/lib/hooks/ThemeContext";
 import SocialPlatformsComponent from "@/components/SocialPlatformsComponent";
+import FAQsection from "@/components/FAQsection";
 
 export default function Home() {
   const { setDarkText } = useContext(ThemeContext);
@@ -36,10 +37,12 @@ export default function Home() {
       <div className="section" data-text="dark">
         <AboutComponent />
       </div>
-       <div className="section" data-text="dark">
+      <div className="section" data-text="dark">
         <SocialPlatformsComponent />
       </div>
-      
+      <div className="section" data-text="light">
+        <FAQsection />
+      </div>
     </div>
   );
 }
