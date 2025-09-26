@@ -7,6 +7,8 @@ import { useEffect, useContext } from "react";
 import { ThemeContext } from "@/lib/hooks/ThemeContext";
 import SocialPlatformsComponent from "@/components/SocialPlatformsComponent";
 import FAQsection from "@/components/FAQsection";
+import SplashCursor from "@/components/SplashCursor";
+import LiquidEther from "@/components/LiquidEther";
 
 export default function Home() {
   const { setDarkText } = useContext(ThemeContext);
@@ -30,19 +32,22 @@ export default function Home() {
 
   useLenis();
   return (
-    <div className="relative w-full">
-      <div className="section" data-text="light">
-        <HeroComponent />
+    <>
+      <SplashCursor />
+      <div className="relative w-full">
+        <div className="section" data-text="light">
+          <HeroComponent />
+        </div>
+        <div className="section" data-text="dark">
+          <AboutComponent />
+        </div>
+        <div className="section" data-text="dark">
+          <SocialPlatformsComponent />
+        </div>
+        <div className="section" data-text="light">
+          <FAQsection />
+        </div>
       </div>
-      <div className="section" data-text="dark">
-        <AboutComponent />
-      </div>
-      <div className="section" data-text="dark">
-        <SocialPlatformsComponent />
-      </div>
-      <div className="section" data-text="light">
-        <FAQsection />
-      </div>
-    </div>
+    </>
   );
 }

@@ -77,10 +77,10 @@ export default function HeroComponent() {
       className="font-sans bg-orange-600 min-h-screen w-full relative flex-center gradient-1"
       ref={homeContainer}
     >
-      <div className="relative flex-center flex-col w-1/2 -top-12">
+      <div className="relative flex-center flex-col w-1/2 z-20 -top-12">
         <div className="relative w-[40vw] h-[20vw]">
           <Image
-            src="/assets/fyuze.svg"
+            src="/fyuzeIcon.svg"
             alt="logo"
             fill
             className="object-contain relative z-100"
@@ -131,7 +131,7 @@ export default function HeroComponent() {
           </div>
         </div>
       </div>
-      <div className="absolute bottom-8 flex justify-start items-start w-full pl-10">
+      <div className="absolute z-20 bottom-8 flex justify-start items-start w-full pl-10">
         <div className="flex-between gap-10 relative">
           <Link
             href="/"
@@ -149,7 +149,7 @@ export default function HeroComponent() {
         </div>
       </div>
       <div
-        className="absolute bottom-8 flex-center flex-col gap-1"
+        className="absolute z-20 bottom-8 flex-center flex-col gap-1"
         ref={scrollBtn}
       >
         <div className="w-[0.6px] h-[20px] relative bg-white line1"></div>
@@ -158,7 +158,7 @@ export default function HeroComponent() {
         </p>
         <div className="w-[0.6px] h-[5px] relative bg-white line2"></div>
       </div>
-      <div className="absolute w-full h-full overflow-hidden droplet-container">
+      <div className="absolute z-20 w-full h-full overflow-hidden droplet-container">
         <div className="absolute left-[32.5vw]  w-[0.5px] h-[100px] gradient-2 z-10 droplet"></div>
         <div className="absolute left-[4vw] w-[0.5px] h-[255px] gradient-2 droplet"></div>
         <div className="absolute left-[4vw]  w-[0.5px] h-[255px] gradient-2 droplet"></div>
