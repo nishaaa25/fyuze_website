@@ -12,6 +12,9 @@ import LiquidEther from "@/components/LiquidEther";
 import DarkVeil from "@/components/DarkVeil";
 import Aurora from "@/components/Aurora";
 
+import CanvasSimulation from "@/components/CanvasSimulation";
+import LiquidEther2 from "@/components/LiquidEther";
+
 export default function Home() {
   // const { setDarkText } = useContext(ThemeContext);
 
@@ -50,7 +53,7 @@ export default function Home() {
           <FAQsection />
         </div>
       </div> */}
-      <div
+      {/* <div
         style={{
           width: "100%",
           height: "100vh",
@@ -58,16 +61,18 @@ export default function Home() {
           backgroundColor: "#000000",
         }}
       >
-        {/* <DarkVeil /> */}
         <div className="absolute top-0 left-0 w-[100vw] h-[100vh] bg-black/10 backdrop-blur-[1000px] z-100">
 
         </div>
         <div className="relative w-[100vw] h-[100vh] -rotate-180 z-10 border">
           <Aurora />
         </div>
-        {/* <div className="absolute top-0 w-[100vw] h-[100vh] z-50">
+        <div className="absolute top-0 w-[100vw] h-[100vh] z-50">
           <Aurora />
-        </div> */}
+        </div>
+      </div> */}
+      <div className="w-full h-screen relative bg-orange-500">
+         <LiquidEther2/>
       </div>
     </>
   );
