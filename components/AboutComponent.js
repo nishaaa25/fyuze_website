@@ -10,30 +10,67 @@ gsap.registerPlugin(ScrollTrigger);
 export default function AboutComponent() {
   const aboutCont = useRef();
 
-useGSAP(() => {
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: aboutCont.current,
-      start: "top 0%",
-      pin: true,
-    },
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: aboutCont.current,
+        start: "top 0%",
+        pin: true,
+      },
+    });
+
+    tl.fromTo(
+      ".content-text",
+      { opacity: 0, y: 40 },
+      { opacity: 1, y: 0, duration: 1, stagger: 0.7 }
+    )
+      .from(
+        ".img8",
+        { opacity: 0, left: "-5vw", top: "-2vh", duration: 1.5, delay: 0.1 },
+        "<"
+      )
+      .from(
+        ".img1",
+        { opacity: 0, left: "-15vw", top: "-5vh", duration: 1, delay: 0.1 },
+        "<"
+      )
+      .from(
+        ".img2",
+        { opacity: 0, left: "-5vw", bottom: "-5vh", duration: 1, delay: 0.1 },
+        "<"
+      )
+      .from(
+        ".img3",
+        { opacity: 0, bottom: "-50vh", left: "-10vw", duration: 1, delay: 0.1 },
+        "<"
+      )
+      .from(
+        ".img4",
+        { opacity: 0, right: "-5vw", bottom: "-5vh", duration: 1, delay: 0.1 },
+        "<"
+      )
+      .from(
+        ".img5",
+        {
+          opacity: 0,
+          right: "-10vw",
+          bottom: "-10vh",
+          duration: 1,
+          delay: 0.1,
+        },
+        "<"
+      )
+      .from(
+        ".img6",
+        { opacity: 0, right: "-10vw", top: "-5vh", duration: 1, delay: 0.1 },
+        "<"
+      )
+      .from(
+        ".img7",
+        { opacity: 0, right: "-20vw", top: "-10vh", duration: 1, delay: 0.1 },
+        "<"
+      );
   });
-
-  tl.fromTo(
-    ".content-text",
-    { opacity: 0, y: 40 },
-    { opacity: 1, y: 0, duration: 1, stagger: 0.7 }
-  )
-    .from(".img8", { opacity: 0, left: "-5vw", top: "-2vh", duration: 1.5, delay:0.1 }, "<")
-    .from(".img1", { opacity: 0, left: "-15vw", top: "-5vh", duration: 1, delay:0.1 }, "<")
-    .from(".img2", { opacity: 0, left: "-5vw", bottom: "-5vh", duration: 1 , delay:0.1}, "<")
-    .from(".img3", { opacity: 0, bottom: "-50vh", left: "-10vw", duration: 1, delay:0.1 }, "<")
-    .from(".img4", { opacity: 0, right: "-5vw", bottom: "-5vh", duration: 1 , delay:0.1}, "<")
-    .from(".img5", { opacity: 0, right: "-10vw", bottom: "-10vh", duration: 1, delay:0.1 }, "<")
-    .from(".img6", { opacity: 0, right: "-10vw", top: "-5vh", duration: 1, delay:0.1 }, "<")
-    .from(".img7", { opacity: 0, right: "-20vw", top: "-10vh", duration: 1, delay:0.1 }, "<");
-});
-
 
   return (
     <div
@@ -68,15 +105,17 @@ useGSAP(() => {
           and effort.
         </p>
       </div>
-      <div className="absolute bottom-8 right-10 flex-center flex-col gap-1">
-        <div className="w-[0.5px] h-[20px] relative bg-gray-500 line1"></div>
-        <p className="text-xs text-center font-medium font-archivo leading-[100%] uppercase text text-gray-500">
-          Scroll to explore
-        </p>
-        <div className="w-[0.5px] h-[5px] relative bg-gray-500 line2"></div>
-      </div>
-      <div className="absolute bottom-8 rounded-full px-8 py-[10px] text-xs leading-[100%] left-10 border-gray-500 border font-medium text-gray-500">
-        FIND YOUR NEXT INFLUENCER
+      <div className="flex-between w-11/12 mx-auto absolute bottom-8">
+      <div className="rounded-full px-8 py-[10px] text-xs leading-[100%] left-10 border-gray-500 border font-medium text-gray-500">
+          FIND YOUR NEXT INFLUENCER
+        </div>
+        <div className="flex-center flex-col gap-1">
+          <div className="w-[0.5px] h-[20px] relative bg-gray-500 line1"></div>
+          <p className="text-xs text-center font-medium font-archivo leading-[100%] uppercase text text-gray-500">
+            Scroll to explore
+          </p>
+          <div className="w-[0.5px] h-[5px] relative bg-gray-500 line2"></div>
+        </div>
       </div>
       <div className="w-full h-full absolute top-0 left-0">
         <div className="w-[12vw] h-[18vw] absolute top-[11vh] left-[-6vw] rounded-[56px] overflow-hidden img1">
