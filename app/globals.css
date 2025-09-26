@@ -10,6 +10,11 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-beige-800: #E2E1DC;
+  --color-dark-black: #0d0d0d;
+  --color-gray-600: #bdbdbd;
+  --color-gray-400: #9E9E9E;
+  --color-gray-500: #4f4f4f;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -65,26 +70,38 @@ body {
 
 @font-face {
   font-family: "Archivo";
-  src: url("/fonts/Archivo/Archivo-Semibold.ttf") format("truetype");
+  src: url("/fonts/Archivo/static/Archivo-Semibold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
 }
 @font-face {
   font-family: "Archivo";
-  src: url("/fonts/Archivo/Archivo-Bold.ttf") format("truetype");
+  src: url("/fonts/Archivo/static/Archivo-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
   font-family: "Archivo";
-  src: url("/fonts/Archivo/Archivo-Regular.ttf") format("truetype");
+  src: url("/fonts/Archivo/static/Archivo-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/Archivo/static/Archivo-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: "Archivo";
-  src: url("/fonts/Archivo/Archivo-Medium.ttf") format("truetype");
+  src: url("/fonts/Archivo/static/Archivo-Medium.ttf") format("truetype");
   font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/Archivo/static/Archivo-Thin.ttf") format("truetype");
+  font-weight: 100;
   font-style: normal;
 }
 .font-archivo {
