@@ -28,44 +28,43 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
 }
 
 @font-face {
   font-family: "Inter";
-  src: url("/fonts/Inter/Inter-Regular.otf") format("otf");
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter/Inter-Black.otf") format("otf");
+  src: url("/fonts/inter/static/Inter_18pt-Black.ttf") format("ttf");
   font-weight: 900;
   font-style: normal;
 }
 @font-face {
   font-family: "Inter";
-  src: url("/fonts/Inter/Inter-ExtraBold.otf") format("otf");
+  src: url("/fonts/inter/static/Inter_18pt-ExtraBold.ttf") format("ttf");
   font-weight: 800;
   font-style: normal;
 }
 @font-face {
   font-family: "Inter";
-  src: url("/fonts/Inter/Inter-ExtraBold.otf") format("otf");
+  src: url("/fonts/inter/static/Inter_18pt-Bold.ttf") format("ttf");
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
   font-family: "Inter";
-  src: url("/fonts/Inter/Inter-Semibold.otf") format("otf");
+  src: url("/fonts/inter/static/Inter_18pt-Semibold.ttf") format("ttf");
   font-weight: 600;
   font-style: normal;
 }
 @font-face {
   font-family: "Inter";
-  src: url("/fonts/Inter/Inter-Medium.otf") format("otf");
+  src: url("/fonts/inter/static/Inter_18pt-Medium.ttf") format("ttf");
   font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter/static/Inter_18pt-Regular.ttf") format("ttf");
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -216,9 +215,13 @@ border-image-source: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 5
   );
 }
 .gradient-4 {
-  background: #833AB4;
-background: radial-gradient(circle,rgba(131, 58, 180, 0) 0%, rgba(237, 77, 30, 0.4) 0%, rgba(207, 128, 2, 0) 62%);
-
+  background: #833ab4;
+  background: radial-gradient(
+    circle,
+    rgba(131, 58, 180, 0) 0%,
+    rgba(237, 77, 30, 0.4) 0%,
+    rgba(207, 128, 2, 0) 62%
+  );
 }
 .gradient-6 {
   background: linear-gradient(
