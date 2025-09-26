@@ -10,114 +10,30 @@ gsap.registerPlugin(ScrollTrigger);
 export default function AboutComponent() {
   const aboutCont = useRef();
 
-  useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: aboutCont.current,
-        start: "top 0%",
-        pin: true,
-      },
-    });
-
-    tl.fromTo(
-      ".content-text",
-      {
-        opacity: 0,
-        y: 40,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        stagger: 0.7,
-      }
-    )
-      .from(
-        ".img1",
-        {
-          opacity: 0,
-          left: "-15vw",
-          top: "-5vh",
-          duration: 1,
-          delay: 0.3,
-        },
-        "<"
-      )
-      .from(
-        ".img2",
-        {
-          opacity: 0,
-          left: "-5vw",
-          bottom: "-5vh",
-          duration: 1,
-          delay: 0.3,
-        },
-        "<"
-      )
-      .from(
-        ".img3",
-        {
-          opacity: 0,
-          bottom: "-50vh",
-          left: "-10vw",
-          duration: 1,
-          delay: 0.3,
-        },
-        "<"
-      )
-      .from(
-        ".img4",
-        {
-          opacity: 0,
-          right: "-5vw",
-          bottom: "-5vh",
-          duration: 1,
-          delay: 0.3,
-        },
-        "<"
-      )
-      .from(
-        ".img5",
-        {
-          opacity: 0,
-          right: "-10vw",
-          bottom: "-10vh",
-          duration: 1,
-          delay: 0.3,
-        },
-        "<"
-      ) .from(
-        ".img6",
-        {
-          opacity: 0,
-          right: "-10vw",
-          bottom: "-5vh",
-          duration: 1,
-          delay: 0.3,
-        },
-        "<"
-      ) .from(
-        ".img7",
-        {
-          opacity: 0,
-          right: "-5vw",
-          bottom: "-5vh",
-          duration: 1,
-          delay: 0.3,
-        },
-        "<"
-      ) .from(
-        ".img8",
-        {
-          opacity: 0,
-          right: "-5vw",
-          bottom: "-5vh",
-          duration: 1,
-          delay: 0.3,
-        },
-        "<"
-      )
+useGSAP(() => {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: aboutCont.current,
+      start: "top 0%",
+      pin: true,
+    },
   });
+
+  tl.fromTo(
+    ".content-text",
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 1, stagger: 0.7 }
+  )
+    .from(".img8", { opacity: 0, left: "-5vw", top: "-2vh", duration: 1.5, delay:0.1 }, "<")
+    .from(".img1", { opacity: 0, left: "-15vw", top: "-5vh", duration: 1, delay:0.1 }, "<")
+    .from(".img2", { opacity: 0, left: "-5vw", bottom: "-5vh", duration: 1 , delay:0.1}, "<")
+    .from(".img3", { opacity: 0, bottom: "-50vh", left: "-10vw", duration: 1, delay:0.1 }, "<")
+    .from(".img4", { opacity: 0, right: "-5vw", bottom: "-5vh", duration: 1 , delay:0.1}, "<")
+    .from(".img5", { opacity: 0, right: "-10vw", bottom: "-10vh", duration: 1, delay:0.1 }, "<")
+    .from(".img6", { opacity: 0, right: "-10vw", top: "-5vh", duration: 1, delay:0.1 }, "<")
+    .from(".img7", { opacity: 0, right: "-20vw", top: "-10vh", duration: 1, delay:0.1 }, "<");
+});
+
 
   return (
     <div
