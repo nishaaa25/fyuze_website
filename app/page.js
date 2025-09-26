@@ -9,31 +9,33 @@ import SocialPlatformsComponent from "@/components/SocialPlatformsComponent";
 import FAQsection from "@/components/FAQsection";
 import SplashCursor from "@/components/SplashCursor";
 import LiquidEther from "@/components/LiquidEther";
+import DarkVeil from "@/components/DarkVeil";
+import Aurora from "@/components/Aurora";
 
 export default function Home() {
-  const { setDarkText } = useContext(ThemeContext);
+  // const { setDarkText } = useContext(ThemeContext);
 
-  useEffect(() => {
-    const sections = document.querySelectorAll(".section");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setDarkText(entry.target.dataset.text === "dark");
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
+  // useEffect(() => {
+  //   const sections = document.querySelectorAll(".section");
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       entries.forEach((entry) => {
+  //         if (entry.isIntersecting) {
+  //           setDarkText(entry.target.dataset.text === "dark");
+  //         }
+  //       });
+  //     },
+  //     { threshold: 0.5 }
+  //   );
 
-    sections.forEach((sec) => observer.observe(sec));
-    return () => observer.disconnect();
-  }, [setDarkText]);
+  //   sections.forEach((sec) => observer.observe(sec));
+  //   return () => observer.disconnect();
+  // }, [setDarkText]);
 
-  useLenis();
+  // useLenis();
   return (
     <>
-      <SplashCursor />
+      {/* <SplashCursor />
       <div className="relative w-full">
         <div className="section" data-text="light">
           <HeroComponent />
@@ -47,6 +49,25 @@ export default function Home() {
         <div className="section" data-text="light">
           <FAQsection />
         </div>
+      </div> */}
+      <div
+        style={{
+          width: "100%",
+          height: "100vh",
+          position: "relative",
+          backgroundColor: "#000000",
+        }}
+      >
+        {/* <DarkVeil /> */}
+        <div className="absolute top-0 left-0 w-[100vw] h-[100vh] bg-black/10 backdrop-blur-[1000px] z-100">
+
+        </div>
+        <div className="relative w-[100vw] h-[100vh] -rotate-180 z-10 border">
+          <Aurora />
+        </div>
+        {/* <div className="absolute top-0 w-[100vw] h-[100vh] z-50">
+          <Aurora />
+        </div> */}
       </div>
     </>
   );
