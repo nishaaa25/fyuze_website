@@ -85,7 +85,7 @@ export default function HeroComponent() {
         className="gradient-1 absolute top-0 left-0 "
       >
         <LiquidEther
-          colors={["#ffb347", "#ee4f20", "#ff6b3a"]}
+          colors={['#ffb347', '#ee4f20', '#ffb347']}
           mouseForce={20}
           cursorSize={100}
           isViscous={false}
