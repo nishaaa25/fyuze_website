@@ -142,13 +142,14 @@ body {
 }
 
 .gradient-1 {
-  background: linear-gradient(
+  /* background: linear-gradient(
     315.79deg,
     #dd3305 7.69%,
     #ee4f20 43.56%,
     #ff6b3a 79.42%,
     #ffb347 97.5%
-  );
+  ); */
+  background-color:  #dd3305;
 }
 .input-gradient {
   background: linear-gradient(

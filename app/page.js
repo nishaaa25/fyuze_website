@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <>
       {/* <SplashCursor /> */}
-      <div className="relative w-full z-50">
+      {/* <div className="relative w-full z-50">
         <div className="section" data-text="light">
           <HeroComponent />
         </div>
@@ -52,7 +52,7 @@ export default function Home() {
         <div className="section" data-text="light">
           <FAQsection />
         </div>
-      </div>
+      </div> */}
       {/* <div
         style={{
           width: "100%",
@@ -71,6 +71,16 @@ export default function Home() {
           <Aurora />
         </div>
       </div> */}
+       <div
+              style={{
+                width: "100%",
+                height: "100vh",
+              }}
+              className="gradient-1 absolute top-0 left-0"
+            >
+              <LiquidEther/>
+              </div>
     </>
+    
   );
 }
