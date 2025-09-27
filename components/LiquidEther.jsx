@@ -15,7 +15,7 @@ export default function LiquidEther({
   colors = ['#dd3305', '#dd3305', '#dd3305'],
   style = {},
   className = '',
-  autoDemo = false,
+  autoDemo = true,
   autoSpeed = 0.5,
   autoIntensity = 2.2,
   takeoverDuration = 0.25,
