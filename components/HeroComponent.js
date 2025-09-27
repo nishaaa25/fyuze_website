@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import SparkleSvg from "./SparkleSvg";
 import SparkleSvg2 from "./SparkleSvg2";
+import LiquidEther from "./LiquidEther";
 
 export default function HeroComponent() {
   const homeContainer = useRef();
@@ -32,7 +33,6 @@ export default function HeroComponent() {
       });
     });
   }, []);
-
 
   useGSAP(() => {
     const tl1 = gsap.timeline({
@@ -74,9 +74,34 @@ export default function HeroComponent() {
 
   return (
     <div
-      className="font-sans bg-orange-600 min-h-screen w-full relative flex-center gradient-1"
+      className="font-sans min-h-screen w-full relative flex-center text-white"
       ref={homeContainer}
     >
+      <div
+        style={{
+          width: "100%",
+          height: "100vh",
+        }}
+        className="gradient-1 absolute top-0 left-0 "
+      >
+        <LiquidEther
+          colors={["#ffb347", "#ee4f20", "#ff6b3a"]}
+          mouseForce={20}
+          cursorSize={100}
+          isViscous={false}
+          viscous={30}
+          iterationsViscous={32}
+          iterationsPoisson={32}
+          resolution={0.5}
+          isBounce={false}
+          autoDemo={true}
+          autoSpeed={0.5}
+          autoIntensity={2.2}
+          takeoverDuration={0.25}
+          autoResumeDelay={3000}
+          autoRampDuration={0.6}
+        />
+      </div>
       <div className="relative flex-center flex-col w-1/2 -top-12">
         <div className="relative w-[40vw] h-[20vw]">
           <Image

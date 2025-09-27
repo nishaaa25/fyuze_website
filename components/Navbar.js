@@ -8,7 +8,7 @@ export default function Navbar() {
   const { darkText } = useContext(ThemeContext);
   return (
     <nav
-      className={`w-full fixed p-9 flex-between z-40  ${
+      className={`w-full fixed p-9 flex-between z-100  ${
         darkText ? "text-gray-500" : "text-white"
       }`}
     >

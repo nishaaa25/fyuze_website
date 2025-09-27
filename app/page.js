@@ -38,8 +38,8 @@ export default function Home() {
   // useLenis();
   return (
     <>
-      {/* <SplashCursor />
-      <div className="relative w-full">
+      {/* <SplashCursor /> */}
+      <div className="relative w-full z-50">
         <div className="section" data-text="light">
           <HeroComponent />
         </div>
@@ -52,7 +52,7 @@ export default function Home() {
         <div className="section" data-text="light">
           <FAQsection />
         </div>
-      </div> */}
+      </div>
       {/* <div
         style={{
           width: "100%",
@@ -71,9 +71,6 @@ export default function Home() {
           <Aurora />
         </div>
       </div> */}
-      <div className="w-full h-screen relative bg-orange-500">
-         <LiquidEther2/>
-      </div>
     </>
   );
 }

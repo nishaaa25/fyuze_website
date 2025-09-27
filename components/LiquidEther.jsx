@@ -12,7 +12,7 @@ export default function LiquidEther({
   BFECC = true,
   resolution = 0.5,
   isBounce = false,
-  colors = ['#ffbb37', '#dd3305', '#ff6b3a'],
+  colors = ['#5227FF', '#FF9FFC', '#B19EEF'],
   style = {},
   className = '',
   autoDemo = true,
@@ -42,7 +42,7 @@ export default function LiquidEther({
           arr = stops;
         }
       } else {
-        arr = ['#ffb347', '#ffb347'];
+        arr = ['#ffffff', '#ffffff'];
       }
       const w = arr.length;
       const data = new Uint8Array(w * 4);
@@ -866,21 +866,18 @@ export default function LiquidEther({
         this.simulation = new Simulation();
         this.scene = new THREE.Scene();
         this.camera = new THREE.Camera();
-        this.output = new THREE.Mesh(
-          new THREE.PlaneGeometry(2, 2),
-          new THREE.RawShaderMaterial({
-            vertexShader: face_vert,
-            fragmentShader: color_frag,
-            transparent: true,
-            depthWrite: false,
-            uniforms: {
-              velocity: { value: this.simulation.fbos.vel_0.texture },
-              boundarySpace: { value: new THREE.Vector2() },
-              palette: { value: paletteTex },
-              bgColor: { value: bgVec4 }
-            }
-          })
-        );
+        this.output = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), new THREE.RawShaderMaterial({
+          vertexShader: face_vert,
+          fragmentShader: color_frag,
+          transparent: true,
+          depthWrite: false,
+          uniforms: {
+            velocity: { value: this.simulation.fbos.vel_0.texture },
+            boundarySpace: { value: new THREE.Vector2() },
+            palette: { value: paletteTex },
+            bgColor: { value: bgVec4 }
+          }
+        }));
         this.scene.add(this.output);
       }
       addScene(mesh) {
@@ -1020,20 +1017,17 @@ export default function LiquidEther({
     webgl.start();
 
     // IntersectionObserver to pause rendering when not visible
-    const io = new IntersectionObserver(
-      entries => {
-        const entry = entries[0];
-        const isVisible = entry.isIntersecting && entry.intersectionRatio > 0;
-        isVisibleRef.current = isVisible;
-        if (!webglRef.current) return;
-        if (isVisible && !document.hidden) {
-          webglRef.current.start();
-        } else {
-          webglRef.current.pause();
-        }
-      },
-      { threshold: [0, 0.01, 0.1] }
-    );
+    const io = new IntersectionObserver(entries => {
+      const entry = entries[0];
+      const isVisible = entry.isIntersecting && entry.intersectionRatio > 0;
+      isVisibleRef.current = isVisible;
+      if (!webglRef.current) return;
+      if (isVisible && !document.hidden) {
+        webglRef.current.start();
+      } else {
+        webglRef.current.pause();
+      }
+    }, { threshold: [0, 0.01, 0.1] });
     io.observe(container);
     intersectionObserverRef.current = io;
 
@@ -1143,7 +1137,6 @@ export default function LiquidEther({
     <div
       ref={mountRef}
       className={`w-full h-full relative overflow-hidden pointer-events-none touch-none ${className || ''}`}
-      style={style}
-    />
+      style={style} />
   );
 }
