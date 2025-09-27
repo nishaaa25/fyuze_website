@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <>
       {/* <SplashCursor /> */}
-      {/* <div className="relative w-full z-50">
+      <div className="relative w-full z-50">
         <div className="section" data-text="light">
           <HeroComponent />
         </div>
@@ -53,7 +53,7 @@ export default function Home() {
         <div className="section" data-text="light">
           <FAQsection />
         </div>
-      </div> */}
+      </div>
       {/* <div
         style={{
           width: "100%",
@@ -72,20 +72,6 @@ export default function Home() {
           <Aurora />
         </div>
       </div> */}
-      <div
-        style={{
-          width: "100%",
-          height: "100vh",
-        }}
-        className="absolute top-0 left-0"
-      >
-        <div
-          className="absolute top-0 left-0  w-full h-full opaicty-60
-               pointer-events-none"
-        ></div>
-        <LiquidEther />
-      </div>
-      <div className="background w-full h-full pointer-events-none absolute top-0 left-9 z-20"></div>
       {/* <div className="backdropShape pointer-events-none"></div> */}
       {/* <div className="absolute top-0 left-0 w-full h-full z-10 opacity-10">
         <Image src="/assets/gradient.png" alt="" fill className="object-contain"/>
