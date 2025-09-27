@@ -3,7 +3,7 @@ import * as THREE from 'three';
 
 export default function LiquidEther({
   mouseForce = 10,
-  cursorSize = 100,
+  cursorSize = 300,
   isViscous = false,
   viscous = 30,
   iterationsViscous = 32,
@@ -12,7 +12,7 @@ export default function LiquidEther({
   BFECC = true,
   resolution = 0.5,
   isBounce = false,
-  colors = ['#ee4f20', '#ff6b3a', '#ffba56'],
+  colors = ['#ee4f20', '#ff6b3a', '#ee4f20'],
   style = {},
   className = '',
   autoDemo = true,
