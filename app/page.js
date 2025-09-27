@@ -76,8 +76,10 @@ export default function Home() {
                 width: "100%",
                 height: "100vh",
               }}
-              className="gradient-1 absolute top-0 left-0"
+              className="absolute top-0 left-0 gradient-1"
             >
+              {/* <div className="absolute top-0 left-0 gradient-1 w-full h-full opaicty-60
+               pointer-events-none"></div> */}
               <LiquidEther/>
               </div>
     </>
