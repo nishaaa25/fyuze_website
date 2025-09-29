@@ -19,7 +19,7 @@ export default function LiquidEther({
   autoSpeed = 0.5,
   autoIntensity = 2.2,
   takeoverDuration = 0.25,
-  autoResumeDelay = 1000,
+    autoResumeDelay = 1000,
   autoRampDuration = 0.6
 }) {
   const mountRef = useRef(null);

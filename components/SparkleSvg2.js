@@ -2,20 +2,20 @@ import gsap from "gsap";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-export default function SparkleSvg2() {
+export default function SparkleSvg2({ restart = false }) {
   const sparkleCont = useRef();
   const tl = useRef(null);
+
   useEffect(() => {
     const sparkles = sparkleCont.current.querySelectorAll(
       ".sparkle-1, .sparkle-2, .sparkle-3"
     );
 
-    tl.current = gsap.timeline({ paused: true });
+    const timeline = gsap.timeline({ paused: true });
 
     const scales = [1.3, 1.2, 1.1, 1];
-
     scales.forEach((s, i) => {
-      tl.current.to(
+      timeline.to(
         sparkles,
         {
           scale: s,
@@ -27,7 +27,7 @@ export default function SparkleSvg2() {
       );
     });
 
-    tl.current.to(
+    timeline.to(
       sparkles,
       {
         scale: 1,
@@ -38,13 +38,22 @@ export default function SparkleSvg2() {
       "+=0"
     );
 
-    tl.current.play();
+    tl.current = timeline;
+    timeline.play(); // initial play
   }, []);
+
+  // 🔑 Restart when parent tells us to
+  useEffect(() => {
+    if (restart && tl.current) {
+      tl.current.restart();
+    }
+  }, [restart]);
+
   return (
     <div
       className="relative w-[18px] h-[18px] sparkle-cont cursor-pointer z-100 ml-[2px]"
       ref={sparkleCont}
-      onMouseEnter={() => tl.current.restart()}
+      onMouseEnter={() => tl.current && tl.current.restart()}
     >
       <Image
         src="/assets/grey-sparkle.svg"

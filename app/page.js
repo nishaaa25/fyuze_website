@@ -8,35 +8,31 @@ import { ThemeContext } from "@/lib/hooks/ThemeContext";
 import SocialPlatformsComponent from "@/components/SocialPlatformsComponent";
 import FAQsection from "@/components/FAQsection";
 import SplashCursor from "@/components/SplashCursor";
-import LiquidEther from "@/components/LiquidEther";
-import DarkVeil from "@/components/DarkVeil";
-import Aurora from "@/components/Aurora";
-
 import CanvasSimulation from "@/components/CanvasSimulation";
 import LiquidEther2 from "@/components/LiquidEther";
 import Image from "next/image";
 
 export default function Home() {
-  // const { setDarkText } = useContext(ThemeContext);
+  const { setDarkText } = useContext(ThemeContext);
 
-  // useEffect(() => {
-  //   const sections = document.querySelectorAll(".section");
-  //   const observer = new IntersectionObserver(
-  //     (entries) => {
-  //       entries.forEach((entry) => {
-  //         if (entry.isIntersecting) {
-  //           setDarkText(entry.target.dataset.text === "dark");
-  //         }
-  //       });
-  //     },
-  //     { threshold: 0.5 }
-  //   );
+  useEffect(() => {
+    const sections = document.querySelectorAll(".section");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setDarkText(entry.target.dataset.text === "dark");
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
 
-  //   sections.forEach((sec) => observer.observe(sec));
-  //   return () => observer.disconnect();
-  // }, [setDarkText]);
+    sections.forEach((sec) => observer.observe(sec));
+    return () => observer.disconnect();
+  }, [setDarkText]);
 
-  // useLenis();
+  useLenis();
   return (
     <>
       {/* <SplashCursor /> */}
@@ -47,12 +43,12 @@ export default function Home() {
         <div className="section" data-text="dark">
           <AboutComponent />
         </div>
-        <div className="section" data-text="dark">
+        {/* <div className="section" data-text="dark">
           <SocialPlatformsComponent />
         </div>
         <div className="section" data-text="light">
           <FAQsection />
-        </div>
+        </div> */}
       </div>
       {/* <div
         style={{
