@@ -365,30 +365,27 @@ export default function AboutComponent() {
         },
         "step3"
       )
-      .to(
-        heading.words,
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          delay: 1.5,
-          stagger: 0.1,
-          ease: "power2.in",
-        },
-        "step3"
-      )
-      .to(
-        ".desc",
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          delay: 1.5,
-          stagger: 0.3,
-          ease: "power2.in",
-        },
-        "step3"
-      );
+      tl.to(
+      heading.words,
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        stagger: 0.08, // smaller stagger for smoother flow
+        ease: "power3.out",
+      },
+      "step4"
+    ).to(
+      ".desc",
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        stagger: 0.15,
+        ease: "power3.out",
+      },
+      "step4" // slight overlap for smoother flow
+    );
   }, []);
 
   // === Cursor Blink Effect ===
@@ -532,17 +529,17 @@ export default function AboutComponent() {
             Discover the Right Voices
           </h3>
           <div className="text-sm leading-[120%] text-gray-500 font-[300] self-center relative right-[5vw] top-[5vh]">
-            <p className="opacity-0 desc" >
+            <p className="opacity-0 desc">
               Search millions of creators in seconds using
             </p>
-            <p className="opacity-0 desc" >
+            <p className="opacity-0 desc">
               AI-powered filters:
               <span className="font-medium">audience authenticity,</span>
             </p>
-            <p className="font-medium  desc opacity-0" >
+            <p className="font-medium  desc opacity-0">
               geo-verification, sentiment, engagement
             </p>
-            <p className="font-medium desc opacity-0" >
+            <p className="font-medium desc opacity-0">
               quality, niche fit, and more.
             </p>
           </div>
