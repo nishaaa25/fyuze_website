@@ -187,6 +187,14 @@ export default function AboutComponent() {
     const heading = new SplitType(aboutCont.current.querySelector("h3"), {
       types: "words",
     });
+    gsap.set(heading.words, {
+      opacity: 0,
+      y: 30, // slightly down so it can animate up
+    });
+    gsap.set(".desc", {
+      opacity: 0,
+      y: 30, // slightly down so it can animate up
+    });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -337,7 +345,8 @@ export default function AboutComponent() {
         ".content-text.para",
         { y: 60, opacity: 0, delay: 1, duration: 1, ease: "power2.in" },
         "step3"
-      ).to(
+      )
+      .to(
         ".input-field",
         {
           scale: 1.2,
@@ -352,6 +361,30 @@ export default function AboutComponent() {
             document.querySelector(".input-field").offsetHeight / 2,
           delay: 1,
           duration: 1,
+          ease: "power2.in",
+        },
+        "step3"
+      )
+      .to(
+        heading.words,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          delay: 1.5,
+          stagger: 0.1,
+          ease: "power2.in",
+        },
+        "step3"
+      )
+      .to(
+        ".desc",
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          delay: 1.5,
+          stagger: 0.3,
           ease: "power2.in",
         },
         "step3"
@@ -491,32 +524,25 @@ export default function AboutComponent() {
             />
           </div>
         </div>
-        <div className="w-[88%] absolute flex justify-between h-[40vh] ">
+        <div className="w-[88%] absolute flex justify-between h-[40vh]">
           <h3
             className="text-[2.6vw] leading-[3vw] font-bold font-archivo w-3/12"
             style={{ willChange: "opacity, transform, filter" }}
           >
             Discover the Right Voices
           </h3>
-          <div className="text-sm leading-[120%] text-gray-500 font-[300] self-center relative right-[5vw] top-[5vh] desc">
-            <p style={{ willChange: "opacity, transform, filter" }}>
+          <div className="text-sm leading-[120%] text-gray-500 font-[300] self-center relative right-[5vw] top-[5vh]">
+            <p className="opacity-0 desc" >
               Search millions of creators in seconds using
             </p>
-            <p style={{ willChange: "opacity, transform, filter" }}>
+            <p className="opacity-0 desc" >
               AI-powered filters:
               <span className="font-medium">audience authenticity,</span>
             </p>
-            <p
-              className="font-medium"
-              style={{ willChange: "opacity, transform, filter" }}
-            >
+            <p className="font-medium  desc opacity-0" >
               geo-verification, sentiment, engagement
             </p>
-            <p
-              className="font-medium"
-              style={{ willChange: "opacity, transform, filter" }}
-            >
-              {" "}
+            <p className="font-medium desc opacity-0" >
               quality, niche fit, and more.
             </p>
           </div>
