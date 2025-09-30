@@ -14,8 +14,25 @@ import Image from "next/image";
 import GlassSurface from "@/components/GlassSurface";
 import FeaturesComponent from "@/components/FeaturesComponent";
 import FeatureCards from "@/components/FeatureCards";
+import LogoLoop from "@/components/LogoLoop";
 
 export default function Home() {
+
+
+  const imageLogos = [
+    { src: "/layers.svg", alt: "Company 1", href: "https://company1.com" },
+    { src: "/sysphus.svg", alt: "Company 2", href: "https://company2.com" },
+    { src: "/circooles.svg", alt: "Company 3", href: "https://company3.com" },
+    { src: "/catelog.svg", alt: "Company 1", href: "https://company1.com" },
+    {
+      src: "/kosent.svg",
+      alt: "Company 5",
+      href: "https://company5.com"
+    },
+    { src: "/layers.svg", alt: "Company 1", href: "https://company1.com" },
+  ];
+
+
   const { setDarkText } = useContext(ThemeContext);
 
   useEffect(() => {
@@ -49,6 +66,18 @@ export default function Home() {
         <div className="section bg-[#E2E1DC] h-[200vh]" data-text="light">
           <FeaturesComponent />
           <FeatureCards />
+          <LogoLoop
+            logos={imageLogos}
+            speed={120}
+            direction="left"
+            logoHeight={28}
+            gap={40}
+            pauseOnHover
+            scaleOnHover
+            fadeOut
+            fadeOutColor="#ffffff"
+            ariaLabel="Technology partners"
+          />
         </div>
         {/* <div className="section" data-text="dark">
           <SocialPlatformsComponent />

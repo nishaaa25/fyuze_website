@@ -431,4 +431,42 @@ body {
 
 .cards-gradient {
   background: linear-gradient(302.64deg, #DD3305 -0.83%, #FF6B3A 49.95%, #FFB347 100.74%);
+  border: 1px solid transparent;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+}
+
+.cards-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(226, 225, 220, 0.9);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+}
+
+.cards-gradient:hover::before {
+  opacity: 1;
+}
+
+.cards-gradient:hover {
+  border: 1px solid #000000;
+}
+
+.cards-gradient h1, .cards-gradient p, .cards-gradient img {
+  color: #ffffff;
+  transition: color 0.3s ease-in-out;
+  position: relative;
+  z-index: 2;
+}
+
+.cards-gradient:hover h1, .cards-gradient:hover p {
+  color: #000000;
 }
