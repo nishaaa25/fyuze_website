@@ -424,3 +424,11 @@ body {
     transform: rotate(15deg) translate(10%, 20%);
   }
 } */
+
+
+
+
+
+.cards-gradient {
+  background: linear-gradient(302.64deg, #DD3305 -0.83%, #FF6B3A 49.95%, #FFB347 100.74%);
+}
