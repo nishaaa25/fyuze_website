@@ -1,7 +1,7 @@
 "use client";
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -63,39 +63,40 @@ const FeaturesComponent = () => {
                 const totalProgress = self.progress;
                 const progressPerElement = 1 / totalElements;
 
-                h1Elements.forEach((h1, index) => {
-                    const blackSpan = h1.querySelector('.text-black');
-                    if (blackSpan) {
-                        const elementStartProgress = index * progressPerElement;
-                        const elementEndProgress = (index + 1) * progressPerElement;
-                        let elementProgress = 0;
-                        if (totalProgress >= elementStartProgress) {
-                            if (totalProgress <= elementEndProgress) {
-                                elementProgress = (totalProgress - elementStartProgress) / progressPerElement;
-                            } else {
-                                elementProgress = 1;
-                            }
-                        }
-                        gsap.to(blackSpan, {
-                            width: `${elementProgress * 100}%`,
-                            duration: 0.1,
-                            ease: "none"
-                        });
-                    }
-                });
+        h1Elements.forEach((h1, index) => {
+          const blackSpan = h1.querySelector(".text-black");
+          if (blackSpan) {
+            const elementStartProgress = index * progressPerElement;
+            const elementEndProgress = (index + 1) * progressPerElement;
+            let elementProgress = 0;
+            if (totalProgress >= elementStartProgress) {
+              if (totalProgress <= elementEndProgress) {
+                elementProgress =
+                  (totalProgress - elementStartProgress) / progressPerElement;
+              } else {
+                elementProgress = 1;
+              }
             }
+            gsap.to(blackSpan, {
+              width: `${elementProgress * 100}%`,
+              duration: 0.1,
+              ease: "none",
+            });
+          }
         });
+      },
+    });
 
-        return () => {
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        };
-    }, []);
-
-    const addToRefs = (el) => {
-        if (el && !h1Refs.current.includes(el)) {
-            h1Refs.current.push(el);
-        }
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
+  }, []);
+
+  const addToRefs = (el) => {
+    if (el && !h1Refs.current.includes(el)) {
+      h1Refs.current.push(el);
+    }
+  };
 
     return (
         <div ref={containerRef} className="h-fit w-full relative py-20">
@@ -150,4 +151,4 @@ const FeaturesComponent = () => {
     )
 }
 
-export default FeaturesComponent
+export default FeaturesComponent;

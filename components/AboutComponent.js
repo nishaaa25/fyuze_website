@@ -955,7 +955,7 @@ export default function AboutComponent() {
                   <span className="font-medium">so you</span>
                 </p>
                 <p className="font-medium desc opacity-0">
-                  know who’s truly worth it.
+                  know who&apos;s truly worth it.
                 </p>
               </div>
               <div className="chat-popup flex justify-center w-full relative mt-2">
@@ -971,7 +971,7 @@ export default function AboutComponent() {
                 </div>
                 <div className="chat-bubble bg-white/40 backdrop-blur-3xl relative flex-center py-3 px-3 rounded-tl-sm rounded-xl w-[80%]">
                   <p className="text-sm text-[#383838] w-10/12 leading-[120%]">
-                    I’ve found the right influencer for you. Ready to launch?
+                    I&apos;ve found the right influencer for you. Ready to launch?
                   </p>
                 </div>
               </div>
