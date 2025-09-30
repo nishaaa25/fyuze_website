@@ -8,10 +8,15 @@ gsap.registerPlugin(ScrollTrigger);
 const FeaturesComponent = () => {
     const containerRef = useRef(null);
     const h1Refs = useRef([]);
+    const paragraphRef = useRef(null);
 
     useEffect(() => {
         const h1Elements = h1Refs.current;
         const totalElements = h1Elements.length;
+
+        // Set initial states for fade-up animation
+        gsap.set(paragraphRef.current, { y: 100, backdropFilter: 'blur(10px)', opacity: 0 });
+        gsap.set(h1Elements, { y: 50, opacity: 0 });
 
         h1Elements.forEach((h1) => {
             const blackSpan = h1.querySelector('.text-black');
@@ -20,11 +25,38 @@ const FeaturesComponent = () => {
             }
         });
 
+        // Fade-up animations
+        gsap.to(paragraphRef.current, {
+            y: 0,
+            backdropFilter: 'blur(0px)',
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: paragraphRef.current,
+                start: "top 80%",
+                toggleActions: "play none none none"
+            }
+        });
+
+        h1Elements.forEach((h1, index) => {
+            gsap.to(h1, {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                delay: index * 0.01,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: h1,
+                    start: "top 80%",
+                }
+            });
+        });
+
         ScrollTrigger.create({
             trigger: containerRef.current,
             start: "top 20%",
             end: "bottom 50%",
-            scrub: 1,
             duration: 10,
             ease: "expo.inOut",
             onUpdate: (self) => {
@@ -67,8 +99,8 @@ const FeaturesComponent = () => {
 
     return (
         <div ref={containerRef} className="h-fit w-full relative py-20">
-            <div className='pl-60 pt-72'>
-                <p className="text-xs uppercase w-[620px] text-[#aaa]">
+            <div className='pt-72 w-[80%] mx-auto'>
+                <p ref={paragraphRef} className="text-xs uppercase w-[620px] mb-4 text-[#aaa]">
                     Boost	your	Business	Using	the	Power	of	Influencer	Marketing.
                 </p>
                 <div>
