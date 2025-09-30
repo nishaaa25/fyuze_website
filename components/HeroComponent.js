@@ -53,7 +53,7 @@ export default function HeroComponent() {
       );
 
     gsap.to(".home-cont", {
-      scaleX: 0.95,
+      scaleX: 0.90,
       scaleY: 0.75,
       borderRadius: 56,
       scrollTrigger: {

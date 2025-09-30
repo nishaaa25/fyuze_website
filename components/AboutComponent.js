@@ -88,8 +88,8 @@ export default function AboutComponent() {
         ],
         {
           opacity: 0,
-          duration: 1.5,
-          ease: "power2.inOut",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "q"
       )
@@ -98,8 +98,8 @@ export default function AboutComponent() {
         {
           left: "-15vw",
           top: "-5vh",
-          duration: 1.5,
-          ease: "power2.inOut",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "q"
       )
@@ -108,8 +108,8 @@ export default function AboutComponent() {
         {
           left: "-5vw",
           bottom: "-5vh",
-          duration: 1.5,
-          ease: "power2.inOut",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "q"
       )
@@ -118,8 +118,8 @@ export default function AboutComponent() {
         {
           bottom: "-50vh",
           left: "-10vw",
-          duration: 1.5,
-          ease: "power2.inOut",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "q"
       )
@@ -128,8 +128,8 @@ export default function AboutComponent() {
         {
           right: "-5vw",
           bottom: "-5vh",
-          duration: 1.5,
-          ease: "power2.inOut",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "q"
       )
@@ -138,8 +138,8 @@ export default function AboutComponent() {
         {
           right: "-10vw",
           bottom: "-10vh",
-          duration: 1.5,
-          ease: "power2.inOut",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "q"
       )
@@ -148,8 +148,8 @@ export default function AboutComponent() {
         {
           right: "-10vw",
           top: "-5vh",
-          duration: 1.5,
-          ease: "power2.inOut",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "q"
       )
@@ -158,8 +158,8 @@ export default function AboutComponent() {
         {
           right: "-20vw",
           top: "-10vh",
-          duration: 1.5,
-          ease: "power2.inOut",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "q"
       )
@@ -168,8 +168,8 @@ export default function AboutComponent() {
         {
           left: "-5vw",
           top: "-2vh",
-          duration: 1.5,
-          ease: "power2.inOut",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "q"
       )
@@ -180,8 +180,8 @@ export default function AboutComponent() {
           opacity: 1,
           y: 0,
           stagger: 0.3,
-          duration: 1,
-          ease: "power2.out",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "q"
       );
@@ -237,9 +237,9 @@ export default function AboutComponent() {
       chars,
       {
         value: text.length,
-        duration: 2,
         delay: 1,
-        ease: "none",
+        duration: 3,
+        ease: "expo.inOut",
         onStart: () => {
           handlePlayAnimation();
         },
@@ -263,8 +263,8 @@ export default function AboutComponent() {
         top: "-5vh",
         opacity: 1,
         delay: 1,
-        duration: 1,
-        ease: "power2.in",
+        duration: 3,
+        ease: "expo.inOut",
       },
       "step3"
     )
@@ -275,8 +275,8 @@ export default function AboutComponent() {
           bottom: "-5vh",
           opacity: 1,
           delay: 1,
-          duration: 1,
-          ease: "power2.in",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step3"
       )
@@ -287,8 +287,8 @@ export default function AboutComponent() {
           left: "-10vw",
           opacity: 1,
           delay: 1,
-          duration: 1,
-          ease: "power2.in",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step3"
       )
@@ -299,8 +299,8 @@ export default function AboutComponent() {
           bottom: "-15vh",
           opacity: 1,
           delay: 1,
-          duration: 1,
-          ease: "power2.in",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step3"
       )
@@ -311,8 +311,8 @@ export default function AboutComponent() {
           bottom: "-10vh",
           opacity: 1,
           delay: 1,
-          duration: 1,
-          ease: "power2.in",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step3"
       )
@@ -331,13 +331,11 @@ export default function AboutComponent() {
           scale: 2.8,
           opacity: 1,
           delay: 1,
-          duration: 1.2,
-          ease: "power2.in",
+          duration: 3,
+          ease: "expo.inOut",
           onStart: () => {
             step3Reached.current = true;
           },
-          borderBottom: 1,
-          borderBottomColor: "#ffffff",
         },
         "step3"
       )
@@ -347,9 +345,9 @@ export default function AboutComponent() {
           right: "-20vw",
           top: "-15vh",
           opacity: 1,
-          duration: 1,
           delay: 1,
-          ease: "power2.in",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step3"
       )
@@ -360,19 +358,19 @@ export default function AboutComponent() {
           top: "-2vh",
           opacity: 1,
           delay: 1,
-          duration: 1,
-          ease: "power2.in",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step3"
       )
       .to(
         ".content-text.heading",
-        { y: -60, opacity: 0, delay: 1, duration: 1, ease: "power2.in" },
+        { y: -60, opacity: 0, delay: 1, duration: 3, ease: "expo.inOut" },
         "step3"
       )
       .to(
         ".content-text.para",
-        { y: 60, opacity: 0, delay: 1, duration: 1, ease: "power2.in" },
+        { y: 60, opacity: 0, delay: 1, duration: 3, ease: "expo.inOut" },
         "step3"
       )
       .to(
@@ -385,12 +383,12 @@ export default function AboutComponent() {
               .left -
             document.querySelector(".input-field").offsetWidth / 2,
           y: () =>
-            window.innerHeight / 4 -
+            window.innerHeight / 5 -
             document.querySelector(".input-field").getBoundingClientRect().top -
             document.querySelector(".input-field").offsetHeight / 2,
           delay: 1,
-          duration: 1,
-          ease: "power2.in",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step3"
       )
@@ -399,8 +397,8 @@ export default function AboutComponent() {
         {
           opacity: 1,
           delay: 1,
-          duration: 1,
-          ease: "power2.in",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step3"
       )
@@ -410,9 +408,9 @@ export default function AboutComponent() {
           y: 0,
           opacity: 1,
           delay: 2,
-          duration: 1,
           stagger: 0.15,
-          ease: "power3.out",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step3"
       )
@@ -429,8 +427,8 @@ export default function AboutComponent() {
         {
           top: 140,
           delay: 1.8,
-          duration: 2,
-          ease: "power3.out",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step3"
       )
@@ -440,9 +438,9 @@ export default function AboutComponent() {
           y: 0,
           opacity: 1,
           delay: 2,
-          duration: 1,
           stagger: 0.15,
-          ease: "power3.out",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step3"
       )
@@ -452,9 +450,9 @@ export default function AboutComponent() {
           y: 0,
           opacity: 1,
           delay: 2,
-          duration: 1,
           stagger: 0.15,
-          ease: "power3.out",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step3"
       )
@@ -463,42 +461,8 @@ export default function AboutComponent() {
         {
           opacity: 1,
           delay: 1.5,
-          duration: 1,
-          ease: "power2.in",
-        },
-        "step3"
-      )
-      .to(
-        chars,
-        {
-          value: 0, // reset
-          duration: 0,
-          delay: 1.5,
-          onUpdate: () => {
-            if (inputRef.current) inputRef.current.placeholder = "";
-          },
-        },
-        "step3"
-      )
-      .to(
-        chars,
-        {
-          value: text.length,
-          duration: 0.8,
-          delay: 1.5,
-          ease: "none",
-          onStart: () => {
-            // Trigger sparkle again when typewriter runs on step 3
-            handlePlayAnimation();
-          },
-          onUpdate: () => {
-            if (inputRef.current) {
-              inputRef.current.placeholder = text.slice(
-                0,
-                Math.floor(chars.value)
-              );
-            }
-          },
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step3"
       );
@@ -509,8 +473,8 @@ export default function AboutComponent() {
         y: "-25vh",
         opacity: 0,
         filter: "blur(6px)",
-        duration: 1,
-        ease: "power2.in",
+        duration: 3,
+        ease: "expo.inOut",
       },
       "step4"
     )
@@ -520,8 +484,8 @@ export default function AboutComponent() {
           y: "-50vh",
           filter: "blur(6px)",
           opacity: 0,
-          duration: 1,
-          ease: "power2.in",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step4"
       )
@@ -530,8 +494,8 @@ export default function AboutComponent() {
         {
           y: "-5vh",
           opacity: 0,
-          duration: 1,
-          ease: "power2.in",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step4"
       )
@@ -540,8 +504,8 @@ export default function AboutComponent() {
         {
           filter: "blur(6px)",
           opacity: 0,
-          duration: 0.4,
-          ease: "power2.in",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step4"
       )
@@ -550,9 +514,9 @@ export default function AboutComponent() {
         {
           filter: "blur(6px)",
           opacity: 0,
-          duration: 0.3,
           stagger: 0.1,
-          ease: "power2.in",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step4"
       )
@@ -561,7 +525,8 @@ export default function AboutComponent() {
         {
           y: "10vh",
           x: "-21.5vw",
-          duration: 1,
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step4"
       )
@@ -570,8 +535,8 @@ export default function AboutComponent() {
         {
           x: () => gsap.getProperty(".img6", "x") - window.innerWidth * 0.1,
           y: () => gsap.getProperty(".img6", "y") - window.innerHeight * 0.05,
-          duration: 1,
-          ease: "power2.inOut",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step4"
       )
@@ -579,8 +544,8 @@ export default function AboutComponent() {
         ".img6 .img-gradient",
         {
           scale: 1.8,
-          duration: 1,
-          ease: "power2.inOut",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step4"
       )
@@ -589,10 +554,10 @@ export default function AboutComponent() {
         {
           y: 0,
           opacity: 1,
-          duration: 1,
           delay: 0.5,
           stagger: 0.15,
-          ease: "power3.out",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step4"
       )
@@ -602,9 +567,9 @@ export default function AboutComponent() {
           y: 0,
           opacity: 1,
           delay: 0.5,
-          duration: 1,
           stagger: 0.15,
-          ease: "power3.out",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step4"
       )
@@ -615,8 +580,8 @@ export default function AboutComponent() {
           top: "10vh",
           filter: "blur(4px)",
           opacity: 1,
-          duration: 1,
-          ease: "power3.out",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step4"
       )
@@ -628,8 +593,8 @@ export default function AboutComponent() {
           scale: 0.5,
           filter: "blur(4px)",
           opacity: 1,
-          duration: 1,
-          ease: "power3.out",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step4"
       )
@@ -640,8 +605,8 @@ export default function AboutComponent() {
           bottom: "-2vh",
           filter: "blur(4px)",
           opacity: 1,
-          duration: 1,
-          ease: "power3.out",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step4"
       )
@@ -652,8 +617,8 @@ export default function AboutComponent() {
           top: "-2vh",
           filter: "blur(4px)",
           opacity: 1,
-          duration: 1,
-          ease: "power3.out",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step4"
       )
@@ -664,8 +629,8 @@ export default function AboutComponent() {
           top: "-6vh",
           filter: "blur(4px)",
           opacity: 1,
-          duration: 0.7,
-          ease: "power3.out",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step4"
       )
@@ -674,8 +639,8 @@ export default function AboutComponent() {
         {
           scale: 0,
           opacity: 0,
-          duration: 0.7,
-          ease: "back.out(1.7)",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step4"
       )
@@ -686,8 +651,8 @@ export default function AboutComponent() {
           y: -20,
           scale: 0.2,
           opacity: 0,
-          duration: 1,
-          ease: "power3.out",
+          duration: 3,
+          ease: "expo.inOut",
         },
         "step4+=0.2"
       );
@@ -747,7 +712,7 @@ export default function AboutComponent() {
             and effort.
           </p>
         </div>
-        <div className="flex-between w-11/12 mx-auto absolute z-20 bottom-8">
+        <div className="flex-between w-11/12 mx-auto absolute z-80 bottom-8">
           <div className="rounded-full px-8 py-[10px] text-xs leading-[100%] left-10 border-gray-500 border font-medium text-gray-500 cursor-pointer">
             FIND YOUR NEXT INFLUENCER
           </div>
@@ -809,11 +774,19 @@ export default function AboutComponent() {
                 alt="img6"
                 className="object-cover object-center rounded-[20px] overflow-hidden z-40"
               />
-              <div className="w-full h-full relative border border-blue-800 ">
-                <GlassSurface
+              <div className="w-full h-full absolute top-0 left-0">
+                {/* <GlassSurface
                   borderRadius={20}
                   className="absolute top-0 left-0 w-full h-[30px] z-50 glass scale-[1.1] opacity-0"
-                ></GlassSurface>
+                ></GlassSurface> */}
+                <div className="w-full h-[60px] relative glass">
+                  <Image
+                    src="/assets/glass.svg"
+                    fill
+                    alt="img6"
+                    className="object-contain object-center rounded-[20px] overflow-hidden z-40"
+                  />
+                </div>
               </div>
             </div>
             <Image
@@ -823,7 +796,7 @@ export default function AboutComponent() {
               className="object-contain img-gradient object-center absolute top-0 left-0 scale-[1.2] z-10"
             />
             <p className="text-[5px] opacity-0 font-medium absolute bottom-[10px] left-[10px] text-white z-100 ig-name">
-              @Nick travels
+              @Nick_travels
             </p>
           </div>
           <div className="w-[4.2vw] h-[6.2vw] absolute -top-[2.8vh] left-[60vw] rounded-2xl overflow-hidden img7">
