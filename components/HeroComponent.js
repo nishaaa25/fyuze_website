@@ -53,15 +53,14 @@ export default function HeroComponent() {
       );
 
     gsap.to(".home-cont", {
-      scaleX: 0.9,
-      scaleY: 0.85,
+      scaleX: 0.95,
+      scaleY: 0.75,
       borderRadius: 56,
       scrollTrigger: {
         trigger: homeContainer.current,
         start: "bottom bottom",
-        end: "bottom center",
+        end: "bottom top",
         scrub: 2,
-        pin: true,
       },
     });
   }, homeContainer);
@@ -71,7 +70,7 @@ export default function HeroComponent() {
       className="font-sans h-screen w-full relative text-white flex-center"
       ref={homeContainer}
     >
-      <div className="w-full h-full home-cont relative bg-black z-100">
+      <div className="w-full h-full home-cont overflow-hidden relative bg-black z-100">
         <div className="absolute top-0 left-0 w-full h-full z-10">
           <div className="absolute top-0 left-0  w-full h-full opacity-60 pointer-events-none"></div>
           <LiquidEther />
