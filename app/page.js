@@ -12,6 +12,8 @@ import CanvasSimulation from "@/components/CanvasSimulation";
 import LiquidEther2 from "@/components/LiquidEther";
 import Image from "next/image";
 import GlassSurface from "@/components/GlassSurface";
+import FeaturesComponent from "@/components/FeaturesComponent";
+import FeatureCards from "@/components/FeatureCards";
 
 export default function Home() {
   const { setDarkText } = useContext(ThemeContext);
@@ -41,8 +43,12 @@ export default function Home() {
         <div className="section" data-text="light">
           <HeroComponent />
         </div>
-        <div className="section" data-text="dark">
+        <div className="section h-[600vh]" data-text="dark">
           <AboutComponent />
+        </div>
+        <div className="section bg-[#E2E1DC] h-[200vh]" data-text="light">
+          <FeaturesComponent />
+          <FeatureCards />
         </div>
         {/* <div className="section" data-text="dark">
           <SocialPlatformsComponent />
