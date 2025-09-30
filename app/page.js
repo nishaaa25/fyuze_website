@@ -44,6 +44,9 @@ export default function Home() {
         <div className="section" data-text="dark">
           <AboutComponent />
         </div>
+        <div className="section" data-text="light">
+          <FeaturesComponent />
+        </div>
         {/* <div className="section" data-text="dark">
           <SocialPlatformsComponent />
         </div>

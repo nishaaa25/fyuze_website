@@ -690,7 +690,9 @@ export default function AboutComponent() {
           ease: "power3.out",
         },
         "step4+=0.2"
-      );
+      )
+
+      
   }, []);
 
   // === Cursor Blink Effect ===
