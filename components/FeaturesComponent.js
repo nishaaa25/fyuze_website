@@ -29,6 +29,7 @@ const FeaturesComponent = () => {
         gsap.to(paragraphRef.current, {
             y: 0,
             backdropFilter: 'blur(0px)',
+            
             opacity: 1,
             duration: 0.8,
             ease: "power2.out",
