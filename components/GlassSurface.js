@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useRef, useState, useId } from "react";
 
 const useDarkMode = () => {
@@ -21,8 +19,8 @@ const useDarkMode = () => {
 
 const GlassSurface = ({
   children,
-  width = 200,
-  height = 80,
+  width = "full",
+  height = "full",
   borderRadius = 20,
   borderWidth = 0.07,
   brightness = 50,
@@ -76,7 +74,9 @@ const GlassSurface = ({
         <rect x="0" y="0" width="${actualWidth}" height="${actualHeight}" fill="black"></rect>
         <rect x="0" y="0" width="${actualWidth}" height="${actualHeight}" rx="${borderRadius}" fill="url(#${redGradId})" />
         <rect x="0" y="0" width="${actualWidth}" height="${actualHeight}" rx="${borderRadius}" fill="url(#${blueGradId})" style="mix-blend-mode: ${mixBlendMode}" />
-        <rect x="${edgeSize}" y="${edgeSize}" width="${actualWidth - edgeSize * 2}" height="${actualHeight - edgeSize * 2}" rx="${borderRadius}" fill="hsl(0 0% ${brightness}% / ${opacity})" style="filter:blur(${blur}px)" />
+        <rect x="${edgeSize}" y="${edgeSize}" width="${actualWidth - edgeSize * 2}" height="${
+      actualHeight - edgeSize * 2
+    }" rx="${borderRadius}" fill="hsl(0 0% ${brightness}% / ${opacity})" style="filter:blur(${blur}px)" />
       </svg>
     `;
 
@@ -84,14 +84,11 @@ const GlassSurface = ({
   };
 
   const updateDisplacementMap = () => {
-    if (feImageRef.current) {
-      feImageRef.current.setAttribute("href", generateDisplacementMap());
-    }
+    feImageRef.current?.setAttribute("href", generateDisplacementMap());
   };
 
   useEffect(() => {
     updateDisplacementMap();
-
     [
       { ref: redChannelRef, offset: redOffset },
       { ref: greenChannelRef, offset: greenOffset },
@@ -104,10 +101,7 @@ const GlassSurface = ({
       }
     });
 
-    if (gaussianBlurRef.current) {
-      gaussianBlurRef.current.setAttribute("stdDeviation", displace.toString());
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    gaussianBlurRef.current?.setAttribute("stdDeviation", displace.toString());
   }, [
     width,
     height,
@@ -142,8 +136,11 @@ const GlassSurface = ({
   }, [width, height]);
 
   const supportsSVGFilters = () => {
+    if (typeof window === "undefined") return false;
+    
     const isWebkit = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent);
     const isFirefox = /Firefox/.test(navigator.userAgent);
+
     if (isWebkit || isFirefox) return false;
 
     const div = document.createElement("div");
@@ -176,27 +173,74 @@ const GlassSurface = ({
           ? `hsl(0 0% 0% / ${backgroundOpacity})`
           : `hsl(0 0% 100% / ${backgroundOpacity})`,
         backdropFilter: `url(#${filterId}) saturate(${saturation})`,
+        boxShadow: isDarkMode
+          ? `0 0 2px 1px color-mix(in oklch, white, transparent 65%) inset,
+             0 0 10px 4px color-mix(in oklch, white, transparent 85%) inset,
+             0px 4px 16px rgba(17, 17, 26, 0.05),
+             0px 8px 24px rgba(17, 17, 26, 0.05),
+             0px 16px 56px rgba(17, 17, 26, 0.05),
+             0px 4px 16px rgba(17, 17, 26, 0.05) inset,
+             0px 8px 24px rgba(17, 17, 26, 0.05) inset,
+             0px 16px 56px rgba(17, 17, 26, 0.05) inset`
+          : `0 0 2px 1px color-mix(in oklch, black, transparent 85%) inset,
+             0 0 10px 4px color-mix(in oklch, black, transparent 90%) inset,
+             0px 4px 16px rgba(17, 17, 26, 0.05),
+             0px 8px 24px rgba(17, 17, 26, 0.05),
+             0px 16px 56px rgba(17, 17, 26, 0.05),
+             0px 4px 16px rgba(17, 17, 26, 0.05) inset,
+             0px 8px 24px rgba(17, 17, 26, 0.05) inset,
+             0px 16px 56px rgba(17, 17, 26, 0.05) inset`,
       };
+    } else {
+      if (isDarkMode) {
+        if (!backdropFilterSupported) {
+          return {
+            ...baseStyles,
+            background: "rgba(0, 0, 0, 0.4)",
+            border: "1px solid rgba(255, 255, 255, 0.2)",
+            boxShadow: `inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+                        inset 0 -1px 0 0 rgba(255, 255, 255, 0.1)`,
+          };
+        } else {
+          return {
+            ...baseStyles,
+            background: "rgba(255, 255, 255, 0.1)",
+            backdropFilter: "blur(12px) saturate(1.8) brightness(1.2)",
+            WebkitBackdropFilter: "blur(12px) saturate(1.8) brightness(1.2)",
+            border: "1px solid rgba(255, 255, 255, 0.2)",
+            boxShadow: `inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+                        inset 0 -1px 0 0 rgba(255, 255, 255, 0.1)`,
+          };
+        }
+      } else {
+        if (!backdropFilterSupported) {
+          return {
+            ...baseStyles,
+            background: "rgba(255, 255, 255, 0.4)",
+            border: "1px solid rgba(255, 255, 255, 0.3)",
+            boxShadow: `inset 0 1px 0 0 rgba(255, 255, 255, 0.5),
+                        inset 0 -1px 0 0 rgba(255, 255, 255, 0.3)`,
+          };
+        } else {
+          return {
+            ...baseStyles,
+            background: "rgba(255, 255, 255, 0.25)",
+            backdropFilter: "blur(12px) saturate(1.8) brightness(1.1)",
+            WebkitBackdropFilter: "blur(12px) saturate(1.8) brightness(1.1)",
+            border: "1px solid rgba(255, 255, 255, 0.3)",
+            boxShadow: `0 8px 32px 0 rgba(31, 38, 135, 0.2),
+                        0 2px 16px 0 rgba(31, 38, 135, 0.1),
+                        inset 0 1px 0 0 rgba(255, 255, 255, 0.4),
+                        inset 0 -1px 0 0 rgba(255, 255, 255, 0.2)`,
+          };
+        }
+      }
     }
-
-    if (!backdropFilterSupported) {
-      return {
-        ...baseStyles,
-        background: isDarkMode ? "rgba(0, 0, 0, 0.4)" : "rgba(255, 255, 255, 0.4)",
-        border: "1px solid rgba(255, 255, 255, 0.2)",
-      };
-    }
-
-    return {
-      ...baseStyles,
-      background: isDarkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.25)",
-      backdropFilter: "blur(12px) saturate(1.8) brightness(1.1)",
-      WebkitBackdropFilter: "blur(12px) saturate(1.8) brightness(1.1)",
-      border: "1px solid rgba(255, 255, 255, 0.3)",
-    };
   };
 
-  const glassSurfaceClasses = "relative flex items-center justify-center overflow-hidden transition-opacity duration-[260ms] ease-out";
+  const glassSurfaceClasses =
+    "relative flex items-center justify-center overflow-hidden transition-opacity duration-[260ms] ease-out";
+
   const focusVisibleClasses = isDarkMode
     ? "focus-visible:outline-2 focus-visible:outline-[#0A84FF] focus-visible:outline-offset-2"
     : "focus-visible:outline-2 focus-visible:outline-[#007AFF] focus-visible:outline-offset-2";
@@ -230,14 +274,56 @@ const GlassSurface = ({
               result="map"
             />
 
-            <feDisplacementMap ref={redChannelRef} in="SourceGraphic" in2="map" result="dispRed" />
-            <feColorMatrix in="dispRed" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" result="red" />
+            <feDisplacementMap
+              ref={redChannelRef}
+              in="SourceGraphic"
+              in2="map"
+              id="redchannel"
+              result="dispRed"
+            />
+            <feColorMatrix
+              in="dispRed"
+              type="matrix"
+              values="1 0 0 0 0
+                      0 0 0 0 0
+                      0 0 0 0 0
+                      0 0 0 1 0"
+              result="red"
+            />
 
-            <feDisplacementMap ref={greenChannelRef} in="SourceGraphic" in2="map" result="dispGreen" />
-            <feColorMatrix in="dispGreen" type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0" result="green" />
+            <feDisplacementMap
+              ref={greenChannelRef}
+              in="SourceGraphic"
+              in2="map"
+              id="greenchannel"
+              result="dispGreen"
+            />
+            <feColorMatrix
+              in="dispGreen"
+              type="matrix"
+              values="0 0 0 0 0
+                      0 1 0 0 0
+                      0 0 0 0 0
+                      0 0 0 1 0"
+              result="green"
+            />
 
-            <feDisplacementMap ref={blueChannelRef} in="SourceGraphic" in2="map" result="dispBlue" />
-            <feColorMatrix in="dispBlue" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0" result="blue" />
+            <feDisplacementMap
+              ref={blueChannelRef}
+              in="SourceGraphic"
+              in2="map"
+              id="bluechannel"
+              result="dispBlue"
+            />
+            <feColorMatrix
+              in="dispBlue"
+              type="matrix"
+              values="0 0 0 0 0
+                      0 0 0 0 0
+                      0 0 1 0 0
+                      0 0 0 1 0"
+              result="blue"
+            />
 
             <feBlend in="red" in2="green" mode="screen" result="rg" />
             <feBlend in="rg" in2="blue" mode="screen" result="output" />

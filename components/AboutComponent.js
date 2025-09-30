@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import SplitType from "split-type";
+import GlassSurface from "./GlassSurface";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -213,7 +214,7 @@ export default function AboutComponent() {
     });
     gsap.set(".popup", {
       opacity: 0,
-      y: 30, // slightly down so it can animate up
+      y: 5, // slightly down so it can animate up
     });
     gsap.set(".gradient", {
       opacity: 0,
@@ -408,9 +409,27 @@ export default function AboutComponent() {
         {
           y: 0,
           opacity: 1,
-          delay: 1.8,
+          delay: 2,
           duration: 1,
           stagger: 0.15,
+          ease: "power3.out",
+        },
+        "step3"
+      )
+      .to(
+        ".glass",
+        {
+          opacity: 1,
+          delay: 1.5,
+        },
+        "step3"
+      )
+      .to(
+        ".glass",
+        {
+          top: 140,
+          delay: 1.8,
+          duration: 2,
           ease: "power3.out",
         },
         "step3"
@@ -420,7 +439,7 @@ export default function AboutComponent() {
         {
           y: 0,
           opacity: 1,
-          delay: 1.8,
+          delay: 2,
           duration: 1,
           stagger: 0.15,
           ease: "power3.out",
@@ -432,7 +451,7 @@ export default function AboutComponent() {
         {
           y: 0,
           opacity: 1,
-          delay: 1.8,
+          delay: 2,
           duration: 1,
           stagger: 0.15,
           ease: "power3.out",
@@ -729,7 +748,7 @@ export default function AboutComponent() {
           </p>
         </div>
         <div className="flex-between w-11/12 mx-auto absolute z-20 bottom-8">
-          <div className="rounded-full px-8 py-[10px] text-xs leading-[100%] left-10 border-gray-500 border font-medium text-gray-500">
+          <div className="rounded-full px-8 py-[10px] text-xs leading-[100%] left-10 border-gray-500 border font-medium text-gray-500 cursor-pointer">
             FIND YOUR NEXT INFLUENCER
           </div>
           <div className="flex-center flex-col gap-1">
@@ -783,12 +802,20 @@ export default function AboutComponent() {
             />
           </div>
           <div className="w-[7.2vw] h-[11.5vw] absolute top-[14vh] right-[11vw] rounded-[20px] img6">
-            <Image
-              src="/assets/img3.png"
-              fill
-              alt="img6"
-              className="object-cover object-center rounded-[20px] overflow-hidden z-40"
-            />
+            <div className="w-full h-full relative overflow-hidden rounded-[20px]">
+              <Image
+                src="/assets/img3.png"
+                fill
+                alt="img6"
+                className="object-cover object-center rounded-[20px] overflow-hidden z-40"
+              />
+              <div className="w-full h-full relative border border-blue-800 ">
+                <GlassSurface
+                  borderRadius={20}
+                  className="absolute top-0 left-0 w-full h-[30px] z-50 glass scale-[1.1] opacity-0"
+                ></GlassSurface>
+              </div>
+            </div>
             <Image
               src="/assets/gradient-3.svg"
               fill

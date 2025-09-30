@@ -51,6 +51,19 @@ export default function Home() {
           <FAQsection />
         </div> */}
       </div>
+
+      {/* <GlassSurface
+        displace={15}
+        distortionScale={-150}
+        redOffset={5}
+        greenOffset={15}
+        blueOffset={25}
+        brightness={60}
+        opacity={0.8}
+        mixBlendMode="screen"
+      >
+        <span>Advanced Glass Distortion</span>
+      </GlassSurface> */}
       {/* <div
         style={{
           width: "100%",
