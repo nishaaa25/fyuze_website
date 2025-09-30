@@ -152,6 +152,15 @@ body {
 
   /* background-color:  #dd3305; */
 }
+.popup-gradient {
+  background: linear-gradient(
+    270.95deg,
+    #dd3305 -25.69%,
+    #ff6b3a 51.57%,
+    #ffb347 128.82%
+  );
+}
+
 .input-gradient {
   background: linear-gradient(
     272.78deg,
@@ -384,7 +393,7 @@ body {
   width: 700px;
   height: 700px;
   right: 0;
-  bottom:0;
+  bottom: 0;
   border-radius: 100px;
   filter: blur(16px);
   mix-blend-mode: plus-lighter;

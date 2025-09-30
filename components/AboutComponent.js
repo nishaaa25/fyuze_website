@@ -13,7 +13,12 @@ export default function AboutComponent() {
   const inputRef = useRef(null);
   const cursorRef = useRef(null);
   const step3Reached = useRef(false);
-  const [sparkleRestart, setSparkleRestart] = useState(false);
+  const [restartSparkle, setRestartSparkle] = useState(false);
+
+  const handlePlayAnimation = () => {
+    setRestartSparkle(true);
+    setTimeout(() => setRestartSparkle(false), 100);
+  };
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -187,11 +192,30 @@ export default function AboutComponent() {
     const heading = new SplitType(aboutCont.current.querySelector("h3"), {
       types: "words",
     });
+    const heading2 = new SplitType(aboutCont.current.querySelector("h4"), {
+      types: "words",
+    });
     gsap.set(heading.words, {
       opacity: 0,
       y: 30, // slightly down so it can animate up
     });
-    gsap.set(".desc", {
+    gsap.set("anim3-desc .desc", {
+      opacity: 0,
+      y: 40, // slightly down so it can animate up
+    });
+    gsap.set(heading2.words, {
+      opacity: 0,
+      y: 10, // slightly down so it can animate up
+    });
+    gsap.set(".anim4-desc .desc", {
+      opacity: 0,
+      y: 20, // slightly down so it can animate up
+    });
+    gsap.set(".popup", {
+      opacity: 0,
+      y: 30, // slightly down so it can animate up
+    });
+    gsap.set(".gradient", {
       opacity: 0,
       y: 30, // slightly down so it can animate up
     });
@@ -200,8 +224,8 @@ export default function AboutComponent() {
       scrollTrigger: {
         trigger: aboutCont.current,
         start: "top top",
-        end: "+=300%",
-        scrub: 1,
+        end: "+=500%",
+        scrub: 3,
         pin: true,
       },
     });
@@ -215,6 +239,9 @@ export default function AboutComponent() {
         duration: 2,
         delay: 1,
         ease: "none",
+        onStart: () => {
+          handlePlayAnimation();
+        },
         onUpdate: () => {
           if (inputRef.current) {
             inputRef.current.placeholder = text.slice(
@@ -301,14 +328,15 @@ export default function AboutComponent() {
             document.querySelector(".img6").offsetHeight / 2 +
             40,
           scale: 2.8,
-          borderRadius: "20px",
           opacity: 1,
           delay: 1,
-          duration: 1,
+          duration: 1.2,
           ease: "power2.in",
           onStart: () => {
             step3Reached.current = true;
           },
+          borderBottom: 1,
+          borderBottomColor: "#ffffff",
         },
         "step3"
       )
@@ -365,27 +393,285 @@ export default function AboutComponent() {
         },
         "step3"
       )
-      tl.to(
-      heading.words,
+      .to(
+        ".ig-name",
+        {
+          opacity: 1,
+          delay: 1,
+          duration: 1,
+          ease: "power2.in",
+        },
+        "step3"
+      )
+      .to(
+        heading.words,
+        {
+          y: 0,
+          opacity: 1,
+          delay: 1.8,
+          duration: 1,
+          stagger: 0.15,
+          ease: "power3.out",
+        },
+        "step3"
+      )
+      .to(
+        ".popup",
+        {
+          y: 0,
+          opacity: 1,
+          delay: 1.8,
+          duration: 1,
+          stagger: 0.15,
+          ease: "power3.out",
+        },
+        "step3"
+      )
+      .to(
+        ".anim3-desc .desc",
+        {
+          y: 0,
+          opacity: 1,
+          delay: 1.8,
+          duration: 1,
+          stagger: 0.15,
+          ease: "power3.out",
+        },
+        "step3"
+      )
+      .to(
+        ".gradient",
+        {
+          opacity: 1,
+          delay: 1.5,
+          duration: 1,
+          ease: "power2.in",
+        },
+        "step3"
+      )
+      .to(
+        chars,
+        {
+          value: 0, // reset
+          duration: 0,
+          delay: 1.5,
+          onUpdate: () => {
+            if (inputRef.current) inputRef.current.placeholder = "";
+          },
+        },
+        "step3"
+      )
+      .to(
+        chars,
+        {
+          value: text.length,
+          duration: 0.8,
+          delay: 1.5,
+          ease: "none",
+          onStart: () => {
+            // Trigger sparkle again when typewriter runs on step 3
+            handlePlayAnimation();
+          },
+          onUpdate: () => {
+            if (inputRef.current) {
+              inputRef.current.placeholder = text.slice(
+                0,
+                Math.floor(chars.value)
+              );
+            }
+          },
+        },
+        "step3"
+      );
+
+    tl.to(
+      ".anim3-heading",
       {
-        y: 0,
-        opacity: 1,
-        duration: 1.2,
-        stagger: 0.08, // smaller stagger for smoother flow
-        ease: "power3.out",
+        y: "-25vh",
+        opacity: 0,
+        filter: "blur(6px)",
+        duration: 1,
+        ease: "power2.in",
       },
       "step4"
-    ).to(
-      ".desc",
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1.2,
-        stagger: 0.15,
-        ease: "power3.out",
-      },
-      "step4" // slight overlap for smoother flow
-    );
+    )
+      .to(
+        ".anim3-desc",
+        {
+          y: "-50vh",
+          filter: "blur(6px)",
+          opacity: 0,
+          duration: 1,
+          ease: "power2.in",
+        },
+        "step4"
+      )
+      .to(
+        ".anim3-gradient",
+        {
+          y: "-5vh",
+          opacity: 0,
+          duration: 1,
+          ease: "power2.in",
+        },
+        "step4"
+      )
+      .to(
+        ".input-field",
+        {
+          filter: "blur(6px)",
+          opacity: 0,
+          duration: 0.4,
+          ease: "power2.in",
+        },
+        "step4"
+      )
+      .to(
+        [".popup.one", ".popup.two", ".popup.three"],
+        {
+          filter: "blur(6px)",
+          opacity: 0,
+          duration: 0.3,
+          stagger: 0.1,
+          ease: "power2.in",
+        },
+        "step4"
+      )
+      .to(
+        ".popup.four",
+        {
+          y: "10vh",
+          x: "-21.5vw",
+          duration: 1,
+        },
+        "step4"
+      )
+      .to(
+        ".img6",
+        {
+          x: () => gsap.getProperty(".img6", "x") - window.innerWidth * 0.1,
+          y: () => gsap.getProperty(".img6", "y") - window.innerHeight * 0.05,
+          duration: 1,
+          ease: "power2.inOut",
+        },
+        "step4"
+      )
+      .to(
+        ".img6 .img-gradient",
+        {
+          scale: 1.8,
+          duration: 1,
+          ease: "power2.inOut",
+        },
+        "step4"
+      )
+      .to(
+        heading2.words,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          delay: 0.5,
+          stagger: 0.15,
+          ease: "power3.out",
+        },
+        "step4"
+      )
+      .to(
+        ".anim4-desc .desc",
+        {
+          y: 0,
+          opacity: 1,
+          delay: 0.5,
+          duration: 1,
+          stagger: 0.15,
+          ease: "power3.out",
+        },
+        "step4"
+      )
+      .to(
+        ".img8",
+        {
+          left: "-2vw",
+          top: "10vh",
+          filter: "blur(4px)",
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+        },
+        "step4"
+      )
+      .to(
+        ".img3",
+        {
+          left: "20vw",
+          bottom: "-30vh",
+          scale: 0.5,
+          filter: "blur(4px)",
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+        },
+        "step4"
+      )
+      .to(
+        ".img4",
+        {
+          right: "15vw",
+          bottom: "-2vh",
+          filter: "blur(4px)",
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+        },
+        "step4"
+      )
+      .to(
+        ".img5",
+        {
+          right: "-3vw",
+          top: "-2vh",
+          filter: "blur(4px)",
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+        },
+        "step4"
+      )
+      .to(
+        ".img7",
+        {
+          right: "-20vw",
+          top: "-6vh",
+          filter: "blur(4px)",
+          opacity: 1,
+          duration: 0.7,
+          ease: "power3.out",
+        },
+        "step4"
+      )
+      .from(
+        ".chat-logo",
+        {
+          scale: 0,
+          opacity: 0,
+          duration: 0.7,
+          ease: "back.out(1.7)",
+        },
+        "step4"
+      )
+      .from(
+        ".chat-bubble",
+        {
+          x: -100,
+          y: -20,
+          scale: 0.2,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out",
+        },
+        "step4+=0.2"
+      );
   }, []);
 
   // === Cursor Blink Effect ===
@@ -422,7 +708,7 @@ export default function AboutComponent() {
             </span>
           </div>
           <div className="relative w-7/12 ml-auto bg-white border border-gray-600 rounded-full flex-center p-3 font-[300] text-sm content-text input-field z-50">
-            <SparkleSvg2 restart={sparkleRestart} />
+            <SparkleSvg2 restart={restartSparkle} />
             <div className="relative w-full ml-3">
               <input
                 ref={inputRef}
@@ -496,13 +782,22 @@ export default function AboutComponent() {
               className="object-cover object-center"
             />
           </div>
-          <div className="w-[7.2vw] h-[11.5vw] absolute top-[14vh] right-[11vw] rounded-[32px] overflow-hidden img6">
+          <div className="w-[7.2vw] h-[11.5vw] absolute top-[14vh] right-[11vw] rounded-[20px] img6">
             <Image
               src="/assets/img3.png"
               fill
               alt="img6"
-              className="object-cover object-center"
+              className="object-cover object-center rounded-[20px] overflow-hidden z-40"
             />
+            <Image
+              src="/assets/gradient-3.svg"
+              fill
+              alt="img6"
+              className="object-contain img-gradient object-center absolute top-0 left-0 scale-[1.2] z-10"
+            />
+            <p className="text-[5px] opacity-0 font-medium absolute bottom-[10px] left-[10px] text-white z-100 ig-name">
+              @Nick travels
+            </p>
           </div>
           <div className="w-[4.2vw] h-[6.2vw] absolute -top-[2.8vh] left-[60vw] rounded-2xl overflow-hidden img7">
             <Image
@@ -521,14 +816,77 @@ export default function AboutComponent() {
             />
           </div>
         </div>
-        <div className="w-[88%] absolute flex justify-between h-[40vh]">
-          <h3
-            className="text-[2.6vw] leading-[3vw] font-bold font-archivo w-3/12"
-            style={{ willChange: "opacity, transform, filter" }}
-          >
-            Discover the Right Voices
-          </h3>
-          <div className="text-sm leading-[120%] text-gray-500 font-[300] self-center relative right-[5vw] top-[5vh]">
+        <div className="w-[88%] absolute flex-center h-[40vh]">
+          <div className="h-full relative w-3/12 anim3-heading">
+            <h3
+              className="text-[2.6vw] leading-[3vw] font-bold font-archivo w-10/12"
+              style={{ willChange: "opacity, transform, filter" }}
+            >
+              Discover the Right Voices
+            </h3>
+          </div>
+          <div className="w-6/12 relative h-[40vh] z-100 flex-center flex-col">
+            <div className="absolute popup one right-[5vw] top-1/8 flex-center gap-2 bg-white/20 backdrop-blur-2xl p-[10px] w-[14vw] rounded-2xl overflow-hidden ">
+              <Image
+                src="/assets/grow.svg"
+                alt="trendup"
+                width={21}
+                height={21}
+                className="object-contain relative"
+              />
+              <span className="font-medium text-[0.9vw] text-dark-black">
+                Reach : 2 Million
+              </span>
+            </div>
+            <div className="absolute popup two left-[4vw] top-3/8 flex-center gap-2 bg-white/20 backdrop-blur-2xl p-[10px] w-[11vw] rounded-2xl overflow-hidden ">
+              <Image
+                src="/assets/ig.svg"
+                alt="ig"
+                width={21}
+                height={21}
+                className="object-contain relative"
+              />
+              <span className="font-medium text-[0.9vw] text-dark-black">
+                140k Followers
+              </span>
+            </div>
+            <div className="absolute popup four right-[4vw] top-[55%] flex-center gap-2  p-[10px] min-w-[14vw] rounded-[20px] overflow-hidden popup-gradient">
+              <Image
+                src="/assets/icon.svg"
+                alt="ig"
+                width={21}
+                height={21}
+                className="object-contain relative mb-1"
+              />
+              <span className="font-[500] text-[0.9vw] leading-[2vw] text-white">
+                FYUZE Score :
+                <span className="text-[1.3vw] leading-[1.3vw]">90</span>/100
+              </span>
+            </div>
+            <div className="absolute popup three left-[6vw] top-[85%] flex justify-center items-start gap-2  p-[10px] pl-[17px] w-[15.5vw] rounded-[20px] overflow-hidden bg-white/20 backdrop-blur-2xl">
+              <Image
+                src="/assets/info.svg"
+                alt="ig"
+                width={21}
+                height={21}
+                className="object-contain relative mb-1"
+              />
+              <span className="font-[500] text-[0.9vw] leading-[1.2vw] text-dark-black">
+                Worked with more that 50 brands, with 75% ROI.
+              </span>
+            </div>
+          </div>
+          <div className="absolute top-0 w-11/12 mx-auto h-screen border-black gradient anim3-gradient">
+            <div className="w-full h-full bottom-[10vh] absolute">
+              <Image
+                src="/assets/gradient-2.svg"
+                alt="gradient-1"
+                fill
+                className="relative object-contain"
+              />
+            </div>
+          </div>
+          <div className="top-[9vh] text-[0.85vw] left-[2vw] w-3/12 leading-[120%] text-gray-500 anim3-desc font-[300] relative ">
             <p className="opacity-0 desc">
               Search millions of creators in seconds using
             </p>
@@ -542,6 +900,53 @@ export default function AboutComponent() {
             <p className="font-medium desc opacity-0">
               quality, niche fit, and more.
             </p>
+          </div>
+        </div>
+        <div className="absolute w-8/12 h-[60vh] flex  top-1/2 -translate-y-1/2">
+          <div className="relative left-0 top-0 w-1/2 h-full"></div>
+          <div className="relative w-1/2  h-full flex-center ">
+            <div className="flex-center flex-col gap-5 w-[55%] relative">
+              <div className="relative anim4-heading w-full">
+                <h4
+                  className="text-[2.6vw] leading-[3.2vw] font-bold font-archivo"
+                  style={{ willChange: "opacity, transform, filter" }}
+                >
+                  Match with Precision
+                </h4>
+              </div>
+              <div className="text-[0.85vw] leading-[120%] w-full text-gray-500 anim4-desc font-[300]">
+                <p className="opacity-0 desc">
+                  Our proprietary FYUZE Score™ ranks
+                </p>
+                <p className="opacity-0 desc">
+                  influencers by projected ROI, audience trust,
+                </p>
+                <p className="desc opacity-0">
+                  and contextual brand alignment —
+                  <span className="font-medium">so you</span>
+                </p>
+                <p className="font-medium desc opacity-0">
+                  know who’s truly worth it.
+                </p>
+              </div>
+              <div className="chat-popup flex justify-center w-full relative mt-2">
+                <div className="w-2/12 chat-logo relative">
+                  <div className="w-10 h-10 rounded-full bg-white relative flex-center">
+                    <Image
+                      src="/assets/orange-logo.svg"
+                      width={15}
+                      height={21}
+                      alt="gradient-logo"
+                    />
+                  </div>
+                </div>
+                <div className="chat-bubble bg-white/40 backdrop-blur-3xl relative flex-center py-3 px-3 rounded-tl-sm rounded-xl w-[80%]">
+                  <p className="text-sm text-[#383838] w-10/12 leading-[120%]">
+                    I’ve found the right influencer for you. Ready to launch?
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
